@@ -4,6 +4,8 @@ import str from './texts/stan.txt';
 const letters = str.split('');
 const $cursor = $('#cursor');
 const $textContainer = $('#text-container');
+const $wpm = $('#wpm');
+const start = Date.now();
 let idx = 0;
 
 init();
@@ -14,6 +16,7 @@ $(document).on('keyup', onKeyUp);
 function init () {
   renderLetters(letters);
   setInterval(cursorInterval, 300);
+  setInterval(wpmInterval, 1000);
 }
 
 function renderLetters (letters) {
@@ -89,5 +92,21 @@ function adjustTextContainerHeight (prevCursorTop, cursorTop) {
     $textContainer.animate({ marginTop: '+=60px' }, 500);
     return;
   }
+}
+
+function wpmInterval () {
+  $wpm.text(wpm());
+}
+
+function wpm () {
+  return parseInt(correctKeys().length / secondsElapsed() * 60 / 4);
+}
+
+function correctKeys () {
+  return $('.letter.correct');
+}
+
+function secondsElapsed () {
+  return (Date.now() - start) / 1000;
 }
 
