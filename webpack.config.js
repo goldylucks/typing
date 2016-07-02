@@ -29,6 +29,10 @@ module.exports = {
         loaders: ['json']
       },
       {
+        test: /\.txt$/,
+        loader: 'raw'
+      },
+      {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]'
       },

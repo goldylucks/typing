@@ -1,8 +1,9 @@
 import keyMap from './keymap.json';
 import $ from 'jquery';
-const str = 'I am happy';
+import str from './texts/stan.txt';
 const letters = str.split('');
 const $cursor = $('#cursor');
+const $textContainer = $('#text-container');
 let idx = 0;
 
 init();
@@ -69,6 +70,24 @@ function cursorInterval () {
 }
 
 function adjustCursor () {
+  const prevTop = $cursor.position().top;
   const { top, left } = l(idx).position();
   $cursor.css({ top, left });
+  adjustTextContainerHeight(prevTop, top);
 }
+
+function adjustTextContainerHeight (prevCursorTop, cursorTop) {
+  // todo [adgo] - handle backspacing to first line
+  if (cursorTop < 126) {
+    return;
+  }
+  if (cursorTop > prevCursorTop) {
+    $textContainer.animate({ marginTop: '-=60px' }, 500);
+    return;
+  }
+  if (cursorTop < prevCursorTop) {
+    $textContainer.animate({ marginTop: '+=60px' }, 500);
+    return;
+  }
+}
+

@@ -2,8 +2,23 @@ html {
   font-family: monospace;
 }
 
+.header {
+  height: 50px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.text-height-container {
+  overflow: hidden;
+  height: 230px;
+}
+
 .text-container {
-  position: relative
+  position: relative;
+  width: 900px;
+  line-height: 4em;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .letter {
