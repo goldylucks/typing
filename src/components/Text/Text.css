@@ -17,14 +17,22 @@
   font-size: 35px;
   color: #999;
   border-radius: 4px;
+  outline: 1px solid white;
 }
 
 .letter.wrong {
-  color: red;
+  color: darkred;
+  background: pink;
 }
 
-.letter.correct {
+.letter.correct:not(.was-wrong) {
+  color: #008000;
+  background-color: #e7fbd3;
+}
+
+.letter.correct.was-wrong {
   color: green;
+  background-color: #FFE9B2;
 }
 
 .cursor {
