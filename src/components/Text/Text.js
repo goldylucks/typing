@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import keyMap from './keymap.json';
+import { some } from 'lodash';
 
 export default class Text {
 
@@ -14,6 +14,7 @@ export default class Text {
     this.$textContainer = $('#text-container');
     this.setLetterIdx(0);
     this._cursorInterval = setInterval(::this.cursorInterval, 300);
+    this.ignoredKeys = this.getIgnoredKeys();
   }
 
   renderLetters () {
@@ -22,19 +23,16 @@ export default class Text {
   }
 
   onKeyDown (evt) {
-    evt.preventDefault();
-    let key = keyMap[String(evt.which)];
-    if (key === 'shift') {
+    const { key, ctrlKey, altKey } = evt;
+    if (this.shouldIgnore(key, ctrlKey, altKey)) {
       return;
     }
+    evt.preventDefault();
     this.$activeLetter.removeClass('active');
-    if (key === 'backspace') {
+    if (key === 'Backspace') {
       this.setLetterIdx(this.letterIdx - 1); // mutates this.$activeLetter
       this.$activeLetter.removeClass('wrong correct');
       return;
-    }
-    if (evt.shiftKey) {
-      key = key.toUpperCase();
     }
     if (key === this.letters[this.letterIdx]) {
       this.$activeLetter.removeClass('wrong').addClass('correct dirty');
@@ -92,4 +90,15 @@ export default class Text {
     window.alert('finished!');
   }
 
+  shouldIgnore (key, ctrlKey, altKey) {
+    if (ctrlKey || altKey) {
+      return true;
+    }
+    if (some(this.ignoredKeys, k => k === key)) {
+      return true;
+    }
+  }
+  getIgnoredKeys () {
+    return [ 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Shift', 'Control', 'CapsLock', 'Alt', 'Tab' ];
+  }
 }

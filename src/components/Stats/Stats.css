@@ -1,0 +1,24 @@
+.stats-container {
+  width: 910px;
+  margin: 20px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #999;
+}
+
+.stats {
+  float: right;
+  color: #999;
+}
+
+.stats:after {
+  clear: both
+}
+
+.wpm {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.accuracy {
+  display: inline-block;
+}

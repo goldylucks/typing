@@ -2,6 +2,7 @@ import $ from 'jquery';
 import str from './texts/stan.txt';
 import Text from './components/Text';
 import Stats from './components/Stats';
+import './index.html';
 
 const letters = str.split('');
 const text = new Text(letters);
