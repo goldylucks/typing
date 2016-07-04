@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import str from './texts/stan.txt';
+import str from './texts/positiveAffirmations.txt';
 import Text from './components/Text';
 import Stats from './components/Stats';
 import './index.html';
