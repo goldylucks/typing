@@ -70,7 +70,7 @@
         "tunnel-identifier": "${TRAVIS_JOB_NUMBER}",
         "build": "build-${TRAVIS_JOB_NUMBER}",
         "name" : "typing",
-        "browserName": "firefox",
+        "browserName": "internet explorer",
         "javascriptEnabled": true,
         "databaseEnabled": true,
         "locationContextEnabled": true,
