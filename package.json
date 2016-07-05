@@ -2,7 +2,6 @@
   "name": "typing",
   "version": "0.1.0",
   "description": "Typing!",
-  "main": "build/index.js",
   "scripts": {
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
     "lint": "eslint --ignore-path .gitignore .",
@@ -34,7 +33,7 @@
     "chai": "3.5.0",
     "chromedriver": "^2.21.2",
     "css-loader": "^0.23.1",
-    "eslint": "^2.9.0",
+    "eslint": "^2.13.1",
     "eslint-config-semistandard": "^6.0.1",
     "eslint-config-standard": "^5.3.1",
     "eslint-plugin-promise": "^1.1.0",
