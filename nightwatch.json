@@ -51,7 +51,7 @@
       }
     },
 
-    "saucelabs" : {
+    "saucelabs-ie" : {
       "selenium_host" : "ondemand.saucelabs.com",
       "selenium_port" : 80,
       "username" : "${SAUCE_USERNAME}",
@@ -69,7 +69,7 @@
       "desiredCapabilities": {
         "tunnel-identifier": "${TRAVIS_JOB_NUMBER}",
         "build": "build-${TRAVIS_JOB_NUMBER}",
-        "name" : "parity-status-page-integration",
+        "name" : "typing",
         "browserName": "firefox",
         "javascriptEnabled": true,
         "databaseEnabled": true,
@@ -85,5 +85,42 @@
         "start_process" : true
       }
     }
+  },
+
+  "saucelabs-chrome" : {
+      "selenium_host" : "ondemand.saucelabs.com",
+      "selenium_port" : 80,
+      "username" : "${SAUCE_USERNAME}",
+      "access_key" : "${SAUCE_ACCESS_KEY}",
+      "use_ssl" : false,
+      "silent" : true,
+      "output" : true,
+      "globals": {
+        "waitForConditionTimeout": 10000
+      },
+      "screenshots" : {
+        "enabled" : false,
+        "path" : ""
+      },
+      "desiredCapabilities": {
+        "tunnel-identifier": "${TRAVIS_JOB_NUMBER}",
+        "build": "build-${TRAVIS_JOB_NUMBER}",
+        "name" : "typing",
+        "browserName": "chrome",
+        "javascriptEnabled": true,
+        "databaseEnabled": true,
+        "locationContextEnabled": true,
+        "applicationCacheEnabled": true,
+        "browserConnectionEnabled": true,
+        "webStorageEnabled": true,
+        "acceptSslCerts": true,
+        "rotatable": true,
+        "nativeEvents": true
+      },
+      "selenium" : {
+        "start_process" : true
+      }
+    }
   }
+
 }
