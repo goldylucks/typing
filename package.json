@@ -7,7 +7,7 @@
     "lint": "eslint --ignore-path .gitignore .",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack --progress --colors",
-    "e2e:ci": "NODE_ENV=tests nightwatch -e saucelabs-ie-9,saucelabs-ie-10,saucelabs-ie-11,saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac,",
+    "e2e:ci": "NODE_ENV=tests nightwatch -e saucelabs-ie-9,saucelabs-ie-10,saucelabs-ie-11,saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac",
     "e2e": "NODE_ENV=tests nightwatch -e chrome",
     "clean": "rm build -rf"
   },

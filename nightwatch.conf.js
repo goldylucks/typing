@@ -1,4 +1,4 @@
-return {
+module.exports = {
   'src_folders': ['./test/e2e'],
   'output_folder': 'reports',
   'custom_commands_path': '',
