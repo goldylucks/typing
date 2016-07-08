@@ -53,7 +53,7 @@ module.exports = {
     'saucelabs-ie-9': saucelab('Windows 7', 'internet explorer', '9'),
     'saucelabs-ie-10': saucelab('Windows 8', 'internet explorer', '10'),
     'saucelabs-ie-11': saucelab('Windows 10', 'internet explorer', '11'),
-    'saucelabs-edge': saucelab('Windows 10', 'MicrosoftEdge', '13'),
+    'saucelabs-edge': saucelab('Windows 10', 'MicrosoftEdge'),
     'saucelabs-chrome-win': saucelab('Windows 10', 'chrome'),
     'saucelabs-chrome-linux': saucelab('Linux', 'chrome'),
     'saucelabs-chrome-mac': saucelab('OS X 10.11', 'chrome'),
