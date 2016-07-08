@@ -1,0 +1,27 @@
+sudo: false
+language: node_js
+node_js:
+  - '5'
+
+env:
+  global:
+    - REPO_SLUG=goldylucks/typing
+    # SAUCE_USERNAME (required by sauce-connect and nightwatch)
+    - secure: rgZYURTu83ybnLloQki8m/MUZokd5bDPLzcrQrNcIYRpWcl5nxq3wLhQha7UKUMXObW1AyjYFeS27w58wLdlDFRb51/pUc+GyFv0Nowohe6tFXR7PRDV7Kmly2ABkgKzfVVYqWjAxSojACCVjcdzYJMXUswiOeCJCHFS7lLZrncQYWBDX7Qt66z6fYo+wlyJQtgqGg1HFW9l0lqHCs2NbLSc/xKSoss2ZTZas9T4Rk89923f7gWw9+CaXCk4wvRnt88KeNuwfq8bHeuCPg+q98TVTUG2/UB/LwyY8i68HJaXSPGsQK18voqYj/yhHeTVB5o2+787h5GJv8SxkmeoA4oaWc4flRuHqB8r3+XrKvn7l03VLNpRhs2GWVS3z6nM11Huq31ag0ZYTR/yWnpOnM3WNXdsnB8CYVL/ZWD0hu+nz2ENWskBbkIAhG6bBAgGUdLfkYuYNzwno08aLBoMyRlwJltbmS2rKlLGazWT0G35j1lh/6PaO3JeTjNV6n99VjH7EfvhmrUNzX+7Fca8LhcRfY1WM002i7U8Oi4n2oEtai1+kwIa3uoWoHoEif51b2rWOyaWiQURzDdY6ECHi4b3RMnIZJUexFc2zEt+tAolr/jF19zDRCZCDAn7cyvIBKjfVRymROkiQ919ZUmKMcZXDoPhvG5PT1YUSByva+c=
+    # SAUCE_ACCESS_KEY (required by sauce-connect and nightwatch)
+    - secure: b3n8iO8WQSIRRJPMhDayCaFcD26RvSMtaqPD15t7UbnHVKsuzooGnmoJ5QasDEu8y3Ks9R3e/gJnObaMK89dLIcRDnmakLc22fSo7KCJraduDa3btrIT5amwuwN7UggslD/FW0K3YUxNL3o4mR4y5u29GEq60U94OOmAG9duoaW31T4vpe/eNLzrMCDljQiIWBlbQYqGqUuEtHWuUbBqr/ltbLD2+UrCs9uq6lR/6tnXrW4RZMefmd6M4CSPzEBwQzaLBUtTyFO9KpjRhr3xIbscPXIicV834JIjwT0mTsut0r8XAObStyT4HDrGBwwaAeFoT4iSSCxCXzwCKVjHDPXZ8OOmPvKAYXrOhW1jq1BhPn8Gb8tV7SbH+Ef0uzw8Jq7tDAph2HtxjeRJHDMtbPxw9XPXCBS3MqelY4tsVvzv4TXDfTiruf8RmtfVC00xkZ6E8Cs8Dubgo8sQG8KF0Rr11/x3rHhM6e5WF5wUF/2JhZVHE3qQpozkw0tW4eRNiAcprmEnGiHxpjxnkIk1OjALco+XeovGzlqE/aeiiZ8sDq2KcFAMi98R2RUrK5XqY1E/hBpSvmf5ipBbAN08R/10M/ZZEUgzGUbT2BHTaVCHC66NCkxJqIs7xvi8uQZ5IiJnVKeZevk7f0toBso9qNUtMf0Y9TZc+Y3fW3VniyY=
+
+matrix:
+  include:
+  - env: SCRIPT=lint
+  - env: E2E=true
+    addons:
+      sauce_connect: true
+  
+cache:
+  directories:
+    - node_modules
+
+script:
+  - if [ "$SCRIPT" ]; then npm run $SCRIPT; fi
+  - if [ "$E2E" ] && [ "$SAUCE_ACCESS_KEY" ]; then npm run start & sleep 10 && npm run e2e:ci; fi
