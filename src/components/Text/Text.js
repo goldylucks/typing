@@ -8,6 +8,17 @@ export default class Text {
     $(document).on('keydown', ::this.onKeyDown);
   }
 
+  render () {
+    return `
+      <div class='text-height-container'>
+        <div id='text-container' class='text-container'>
+          <div id='text'></div>
+          <div id='cursor' class='cursor'></div>
+        </div>
+      </div>
+    `;
+  }
+
   init () {
     this.renderLetters();
     this.$cursor = $('#cursor');

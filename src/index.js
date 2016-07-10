@@ -1,16 +1,17 @@
 import $ from 'jquery';
-import str from './texts/positiveAffirmations.txt';
-import Text from './components/Text';
-import Stats from './components/Stats';
 import './index.html';
-
-const letters = str.split('');
-const text = new Text(letters);
-const stats = new Stats();
+import TextPage from './pages/TextPage';
+import MainPage from './pages/MainPage';
 
 $(document).ready(init);
 
 function init () {
-  text.init();
-  stats.init();
+  const PageClass = Page();
+  const page = new PageClass();
+  page.init();
+}
+
+function Page () {
+  return TextPage;
+  return window.location.pathname;
 }

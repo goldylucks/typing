@@ -1,6 +1,26 @@
 import $ from 'jquery';
 
 export default class Stats {
+
+  render () {
+    return `
+      <div class='stats-container'>
+        <div class="stats">
+          <div class='wpm'>
+            wpm:
+            <span id='wpm' class='letter'>0</span>
+          </div>
+          <div class='accuracy'>
+            accuracy
+            <span class='letter'>
+              <span id='accuracy'>0</span>%
+            </span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   init () {
     this.$wpm = $('#wpm');
     this.$accuracy = $('#accuracy');
