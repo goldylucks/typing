@@ -2,13 +2,29 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <link rel='stylesheet' href='./index.css' />
-    <link rel='stylesheet' href='./components/Text/Text.css' />
-    <link rel='stylesheet' href='./components/Stats/Stats.css' />
     <title>Touch Typing</title>
   </head>
   <body>
     <div id="appContainer"></div>
-    <script src='./index.js'></script>
+    <script>
+      const base = `${window.location.protocol}//${window.location.host}/`;
+      addStylesheet('index');
+      addStylesheet('components/Text/Text');
+      addStylesheet('components/Stats/Stats');
+      addScript('index');
+
+      function addStylesheet (path) {
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = base + path + '.css';
+        document.head.appendChild(stylesheet);
+      }
+
+      function addScript (path) {
+        const script = document.createElement('script');
+        script.src = base + path + '.js';
+        document.body.appendChild(script);
+      }
+    </script>
   </body>
 </html>

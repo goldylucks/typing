@@ -6,12 +6,15 @@ import MainPage from './pages/MainPage';
 $(document).ready(init);
 
 function init () {
-  const PageClass = Page();
+  const PageClass = Page(window.location.pathname);
   const page = new PageClass();
   page.init();
 }
 
-function Page () {
-  return TextPage;
-  return window.location.pathname;
+function Page (pathname) {
+  if (pathname.match('/texts/')) {
+    return TextPage;
+  }
+
+  return MainPage;
 }

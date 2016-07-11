@@ -1,10 +1,7 @@
 import $ from 'jquery';
 import Text from '../../components/Text';
 import Stats from '../../components/Stats';
-import str from '../../texts/positiveAffirmations.txt';
-const letters = str.split('');
-const text = new Text(letters);
-const stats = new Stats();
+
 
 export default class TextPage {
 
@@ -18,16 +15,25 @@ export default class TextPage {
   }
 
   fetchText () {
+    const url = this.pathFromWindow();
     return new Promise((resolve, reject) => {
-      return $.get('../../texts/positiveAffirmations.txt', textToType => resolve(textToType));
+      return $.get(url, textToType => resolve(textToType));
     });
+  }
+
+  pathFromWindow () {
+    const path = window.location.pathname.replace('/texts/', '');
+    return `../../texts/${path}.txt`;
   }
 
   init () {
     this.render();
-    $('#textContainer').html(text.render());
-    $('#statsContainer').html(stats.render());
     this.textPromise.then(textToType => {
+      const letters = textToType.split('');
+      const text = new Text(letters);
+      const stats = new Stats();
+      $('#textContainer').html(text.render());
+      $('#statsContainer').html(stats.render());
       text.init();
       stats.init();
     });
