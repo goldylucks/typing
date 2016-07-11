@@ -9,7 +9,7 @@ module.exports = {
   debug: !isProd,
   cache: !isProd,
   devtool: isProd ? '#source-map' : '#cheap-module-eval-source-map',
-  context: path.join(__dirname, './src'),
+  context: path.join(__dirname, './client'),
   entry: {
     index: './index.js'
   },
@@ -21,7 +21,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: path.join(__dirname, './client'),
         loader: 'babel'
       },
       {
@@ -38,7 +38,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: /src/,
+        include: path.join(__dirname, './client'),
         loaders: [
           'style',
           'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
@@ -47,7 +47,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /src/,
+        include: path.join(__dirname, './client'),
         loader: 'style!css'
       },
       {
@@ -107,7 +107,7 @@ module.exports = {
     return plugins;
   }()),
   devServer: {
-    contentBase: './src',
+    contentBase: './client',
     hot: !isProd
   }
 };

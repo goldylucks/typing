@@ -13,7 +13,7 @@ export default class TextPage {
   html () {
     return `
       '<h1>Main Page!</h1>'
-      ${ this.renderNav() }
+      ${this.renderNav()}
     `;
   }
 
