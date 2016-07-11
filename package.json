@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
     "lint": "eslint --ignore-path .gitignore .",
+    "server": "nodemon server/server.js",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack --progress --colors",
     "e2e:ci": "NODE_ENV=tests nightwatch -e saucelabs-ie-9,saucelabs-ie-10,saucelabs-ie-11,saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac,saucelabs-firefox-win,saucelabs-firefox-linux,saucelabs-firefox-mac,saucelabs-safari-mac",
@@ -35,6 +36,7 @@
     "chai": "3.5.0",
     "chromedriver": "^2.21.2",
     "css-loader": "^0.23.1",
+    "deasync": "^0.1.7",
     "eslint": "^2.13.1",
     "eslint-config-semistandard": "^6.0.1",
     "eslint-config-standard": "^5.3.1",
@@ -48,7 +50,9 @@
     "less-loader": "^2.2.3",
     "mocha": "^2.4.5",
     "mock-local-storage": "1.0.2",
+    "morgan": "^1.7.0",
     "nightwatch": "^0.9.5",
+    "nodemon": "^1.9.2",
     "postcss-loader": "^0.8.1",
     "pre-git": "^3.8.1",
     "rucksack-css": "^0.8.5",
@@ -62,8 +66,15 @@
     "webpack-hot-middleware": "^2.7.1"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "colors": "^1.1.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
     "jquery": "^3.0.0",
-    "lodash": "^4.11.1",
+    "lodash": "^4.13.1",
+    "method-override": "^2.3.6",
+    "mongodb": "^2.2.1",
+    "mongoose": "^4.5.3",
     "raw-loader": "^0.5.1"
   },
   "config": {

@@ -1,9 +1,23 @@
 import $ from 'jquery';
+import { API_URL } from '../../constants/constants';
 
 export default class TextPage {
 
+  constructor () {
+    this.texts = [];
+    this.textsPromise = this.fetchTexts();
+    this.textsPromise
+      .then(texts => {
+        this.texts = texts;
+      });
+  }
+
   init () {
     this.render();
+    this.textsPromise
+      .then(texts => {
+        this.renderNav(texts);
+      });
   }
 
   render () {
@@ -13,17 +27,25 @@ export default class TextPage {
   html () {
     return `
       '<h1>Main Page!</h1>'
-      ${this.renderNav()}
+      '<div id=texts>Loading ...</div>'
     `;
   }
 
-  renderNav () {
-    return `
+  renderNav (texts) {
+    const textsHtml = texts.map(t => {
+      return `<li><a href='./texts/${t.title}'>${t.title}</li>`;
+    });
+    const html = `
       <ul>
-        <li><a href='./texts/stan'>Stan</li>
-        <li><a href='./texts/destination-poon/1'>Russian</li>
-        <li><a href='./texts/destination-poon/2'>S[er</li>
+        ${textsHtml}
       </ul>
     `;
+    $('#texts').html(html);
+  }
+
+  fetchTexts () {
+    return new Promise((resolve, reject) => {
+      return $.get(`${API_URL}/texts`, texts => resolve(texts));
+    });
   }
 }

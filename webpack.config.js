@@ -22,22 +22,27 @@ module.exports = {
       {
         test: /\.js$/,
         include: path.join(__dirname, './client'),
+        exclude: path.join(__dirname, './server'),
         loader: 'babel'
       },
       {
         test: /\.json$/,
+        exclude: path.join(__dirname, './server'),
         loaders: ['json']
       },
       {
         test: /\.txt$/,
+        exclude: path.join(__dirname, './server'),
         loader: 'raw'
       },
       {
         test: /\.html$/,
+        exclude: path.join(__dirname, './server'),
         loader: 'file?name=[name].[ext]'
       },
       {
         test: /\.css$/,
+        exclude: path.join(__dirname, './server'),
         include: path.join(__dirname, './client'),
         loaders: [
           'style',
@@ -47,11 +52,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: path.join(__dirname, './server'),
         include: path.join(__dirname, './client'),
         loader: 'style!css'
       },
       {
         test: /\.less$/,
+        exclude: path.join(__dirname, './server'),
         loaders: [
           'style',
           'css',
@@ -60,14 +67,17 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|)$/,
+        exclude: path.join(__dirname, './server'),
         loader: 'file-loader'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        exclude: path.join(__dirname, './server'),
         loader: 'url-loader?limit=10000&mimetype=application/font-woff'
       },
       {
         test: /\.(woff(2)|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        exclude: path.join(__dirname, './server'),
         loader: 'file-loader'
       }
     ]
