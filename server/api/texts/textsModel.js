@@ -16,7 +16,15 @@ function getSchema () {
     body: {
       type: String,
       required: true
-    }
+    },
+
+    public: {
+      type: Boolean,
+      required: true,
+      default: true
+    },
+
+    userId: Schema.Types.ObjectId
 
   });
 }
