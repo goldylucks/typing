@@ -26,14 +26,14 @@ export default class TextPage {
 
   html () {
     return `
-      '<h1>Main Page!</h1>'
-      '<div id=texts>Loading ...</div>'
+      <h1>Main Page!</h1>
+      <div id=texts>Loading ...</div>
     `;
   }
 
   renderNav (texts) {
     const textsHtml = texts.map(t => {
-      return `<li><a href='./texts/${t.title}'>${t.title}</li>`;
+      return `<li><a href=./texts/${t._id}>${t.title}</li>`;
     });
     const html = `
       <ul>

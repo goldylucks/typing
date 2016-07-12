@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Text from '../../components/Text';
 import Stats from '../../components/Stats';
-
+import { API_URL } from '../../constants/constants';
 
 export default class TextPage {
 
@@ -15,21 +15,20 @@ export default class TextPage {
   }
 
   fetchText () {
-    const url = this.pathFromWindow();
+    const id = this.idFromWindow();
     return new Promise((resolve, reject) => {
-      return $.get(url, textToType => resolve(textToType));
+      return $.get(`${API_URL}/texts/${id}`, textToType => resolve(textToType));
     });
   }
 
-  pathFromWindow () {
-    const path = window.location.pathname.replace('/texts/', '');
-    return `../../texts/${path}.txt`;
+  idFromWindow () {
+    return window.location.pathname.replace('/texts/', '');
   }
 
   init () {
     this.render();
-    this.textPromise.then(textToType => {
-      const letters = textToType.split('');
+    this.textPromise.then(textDoc => {
+      const letters = textDoc.body.split('');
       const text = new Text(letters);
       const stats = new Stats();
       $('#textContainer').html(text.render());
