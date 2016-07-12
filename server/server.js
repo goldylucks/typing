@@ -1,10 +1,10 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var config = require('./config/config');
-var api = require('./api/api');
+const config = require('./config/config');
+const api = require('./api/api');
 
 mongoose.connect(config.db.url);
 

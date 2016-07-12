@@ -1,6 +1,6 @@
-var _ = require('lodash');
+const _ = require('lodash');
 
-var config = {
+const config = {
 
   dev: 'development',
   test: 'testing',
@@ -18,6 +18,6 @@ var config = {
 process.env.NODE_ENV = process.env.NODE_ENV || config.dev;
 
 config.env = process.env.NODE_ENV;
-var envConfig = require(`./${config.env}`);
+const envConfig = require(`./${config.env}`);
 
 module.exports = _.merge(config, envConfig);

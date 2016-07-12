@@ -1,13 +1,13 @@
-var deasync = require('deasync');
-var logger = require('./logger');
-var config = require('../config/config');
+const deasync = require('deasync');
+const logger = require('./logger');
+const config = require('../config/config');
 
 // models
-var Texts = require('../api/texts/textsModel');
+const Texts = require('../api/texts/textsModel');
 
 // data
-var seedData = require('./seed.json');
-var texts = seedData.texts;
+const seedData = require('./seed.json');
+const texts = seedData.texts;
 
 // init
 logger.log(`Seeding ${config.env} DB ...`);
@@ -15,7 +15,7 @@ logger.log(`Seeding ${config.env} DB ...`);
 module.exports = run();
 
 function run () {
-  var ready; // eslint-disable-line no-unmodified-loop-condition
+  let ready; // eslint-disable-line no-unmodified-loop-condition
   cleanDB()
     .then(seedTexts)
     .then(onSeedSuccess)
@@ -30,14 +30,14 @@ function run () {
 
 function cleanDB () {
   logger.log('Cleaning the DB ...');
-  var promises = [Texts]
+  const promises = [Texts]
     .map(model => model.remove().exec());
   return Promise.all(promises);
 }
 
 function seedTexts () {
   logger.log('Seeding texts ...');
-  var promises = texts.map(p => Texts.create(p));
+  const promises = texts.map(p => Texts.create(p));
   return Promise.all(promises);
 }
 

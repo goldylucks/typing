@@ -1,8 +1,8 @@
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var config = require('../config/config');
-var override = require('method-override');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const config = require('../config/config');
+const override = require('method-override');
 
 module.exports = function (app) {
   if (config.logging) {

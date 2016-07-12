@@ -1,8 +1,9 @@
-var router = require('express').Router();
-var controller = require('./textsController');
+const router = require('express').Router();
+const controller = require('./textsController');
 
 router.route('/')
-  .get(controller.get);
+  .get(controller.get)
+  .post(controller.post);
 
 router.route('/:id')
   .get(controller.getOne);
