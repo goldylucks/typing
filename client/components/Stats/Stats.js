@@ -35,7 +35,7 @@ export default class Stats {
 
   calcWpm () {
     return parseInt(
-      this.getCorrectCount() / this.calcSecondsElapsed() * 60 / 4
+      this.getCorrectCount() / this.calcSeconds() * 60 / 4
     );
   }
 
@@ -49,7 +49,7 @@ export default class Stats {
     );
   }
 
-  calcSecondsElapsed () {
+  calcSeconds () {
     return (Date.now() - this.started) / 1000;
   }
 

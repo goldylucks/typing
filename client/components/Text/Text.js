@@ -3,8 +3,9 @@ import { some } from 'lodash';
 
 export default class Text {
 
-  constructor (letters) {
+  constructor (letters, onFinish) {
     this.letters = letters;
+    this.onFinish = onFinish
     $(document).on('keydown', ::this.onKeyDown);
   }
 
@@ -98,7 +99,7 @@ export default class Text {
 
   finish () {
     clearInterval(this._cursorInterval);
-    window.alert('finished!');
+    this.onFinish();
   }
 
   shouldIgnore (key, ctrlKey, altKey) {

@@ -3,18 +3,9 @@ import { API_URL } from '../../constants/constants';
 
 export default class TextPage {
 
-  constructor () {
-    this.texts = [];
-    this.textsPromise = this.fetchTexts();
-    this.textsPromise
-      .then(texts => {
-        this.texts = texts;
-      });
-  }
-
   init () {
     this.render();
-    this.textsPromise
+    this.fetchTexts()
       .then(texts => {
         this.renderNav(texts);
       });
@@ -27,7 +18,7 @@ export default class TextPage {
   html () {
     return `
       <h1>Main Page!</h1>
-      <div id=texts>Loading ...</div>
+      <div id=texts>Loading Texts ...</div>
     `;
   }
 

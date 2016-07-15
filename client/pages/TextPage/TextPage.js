@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { emit } from '../../utils/utils';
 import Text from '../../components/Text';
 import Stats from '../../components/Stats';
 import { API_URL } from '../../constants/constants';
@@ -6,18 +7,12 @@ import { API_URL } from '../../constants/constants';
 export default class TextPage {
 
   constructor () {
-    this.textToType = '';
-    this.textPromise = this.fetchText();
-    this.textPromise
-      .then(textToType => {
-        this.textToType = textToType;
-      });
+    this.id = this.idFromWindow();
   }
 
   fetchText () {
-    const id = this.idFromWindow();
     return new Promise((resolve, reject) => {
-      return $.get(`${API_URL}/texts/${id}`, textToType => resolve(textToType));
+      return $.get(`${API_URL}/texts/${this.id}`, textToType => resolve(textToType));
     });
   }
 
@@ -27,14 +22,15 @@ export default class TextPage {
 
   init () {
     this.render();
-    this.textPromise.then(textDoc => {
-      const letters = textDoc.body.split('');
-      const text = new Text(letters);
-      const stats = new Stats();
-      $('#textContainer').html(text.render());
-      $('#statsContainer').html(stats.render());
-      text.init();
-      stats.init();
+    this.fetchText().then(textDoc => {
+      this.textDoc = textDoc;
+      this.letters = textDoc.body.split('');
+      this.text = new Text(this.letters, this.onFinish);
+      this.stats = new Stats();
+      $('#textContainer').html(this.text.render());
+      $('#statsContainer').html(this.stats.render());
+      this.text.init();
+      this.stats.init();
     });
   }
 
@@ -51,4 +47,14 @@ export default class TextPage {
       </div>
     `;
   }
+
+  onFinish = () => {
+    const { stats, id } = this;
+    const { title } = this.textDoc;
+    const wpm = stats.calcWpm();
+    const seconds = stats.calcSeconds();
+    const accuracy = stats.calcAccuracy();
+    emit('finishText', id, title, wpm, seconds, accuracy);
+  }
+
 }
