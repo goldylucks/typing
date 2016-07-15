@@ -31,11 +31,6 @@ module.exports = {
         loaders: ['json']
       },
       {
-        test: /\.txt$/,
-        exclude: path.join(__dirname, './server'),
-        loader: 'raw'
-      },
-      {
         test: /\.html$/,
         exclude: path.join(__dirname, './server'),
         loader: 'file?name=[name].[ext]'
