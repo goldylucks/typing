@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import { route } from '../../utils/utils';
 
 export default class FinishPage {
 

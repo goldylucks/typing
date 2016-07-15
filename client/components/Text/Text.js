@@ -5,7 +5,7 @@ export default class Text {
 
   constructor (letters, onFinish) {
     this.letters = letters;
-    this.onFinish = onFinish
+    this.onFinish = onFinish;
     $(document).on('keydown', ::this.onKeyDown);
   }
 

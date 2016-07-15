@@ -4,6 +4,7 @@ import { onEmit } from './utils/utils';
 import TextPage from './pages/TextPage';
 import MainPage from './pages/MainPage';
 import FinishPage from './pages/FinishPage';
+import AddTextPage from './pages/AddTextPage';
 
 $(document).ready(init);
 onEmit('route', onRoute);
@@ -25,7 +26,9 @@ function Page (pathname) {
     return FinishPage;
   }
 
-
+  if (pathname.match('/add-text')) {
+    return AddTextPage;
+  }
 
   return MainPage;
 }
@@ -38,4 +41,3 @@ function onRoute (path, state) {
 function onFinishText (id, title, wpm, seconds, accuracy) {
   onRoute(`/finish/${id}`, { id, title, wpm, seconds, accuracy });
 }
-

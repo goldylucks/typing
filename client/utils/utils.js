@@ -5,10 +5,10 @@ export function route (path, state) {
   emit('route', path, state);
 }
 
-export function emit(...args) {
+export function emit (...args) {
   emitter.emit(...args);
 }
 
-export function onEmit(eventName, cb) {
+export function onEmit (eventName, cb) {
   emitter.on(eventName, cb);
 }
