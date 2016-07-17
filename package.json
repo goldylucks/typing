@@ -6,7 +6,7 @@
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
     "lint": "eslint --ignore-path .gitignore .",
     "server": "nodemon server/server.js --ignore client/",
-    "server:prod": "NODE_ENV=production server/server.js",
+    "server:prod": "NODE_ENV=production node server/server.js",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack --progress --colors",
     "e2e:ci": "NODE_ENV=tests nightwatch -e saucelabs-ie-9,saucelabs-ie-10,saucelabs-ie-11,saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac,saucelabs-firefox-win,saucelabs-firefox-linux,saucelabs-firefox-mac,saucelabs-safari-mac",
