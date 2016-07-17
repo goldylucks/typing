@@ -78,7 +78,7 @@ function saucelab (platform, browserName, browserVersion) {
     'silent': true,
     'output': true,
     'globals': {
-      'waitForConditionTimeout': 10000,
+      'waitForConditionTimeout': 10000
     },
     'screenshots': {
       'enabled': false,

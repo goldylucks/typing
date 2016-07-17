@@ -80,13 +80,15 @@
   },
   "config": {
     "pre-git": {
-      "pre-commit": [],
+      "pre-commit": [
+        "scripts/protect-master.sh"
+      ],
       "pre-push": [
         "npm run lint"
       ],
       "post-commit": [],
-      "post-checkout": [],
-      "post-merge": []
+      "post-checkout": "npm install",
+      "post-merge": "npm install"
     }
   }
 }

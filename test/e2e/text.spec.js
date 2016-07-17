@@ -32,7 +32,7 @@ module.exports = {
   // selenium keys don't send the .key property
   // if selenium won't fix that, switch back to keycodes in text component
   // to allow testing
-  'Assert keys' (client) {
+  'Assert keys class' (client) {
     client.expect.element('#l-0').to.have.attribute('class').equals('letter');
     // test correct letter
     client.keys('C');
@@ -66,6 +66,21 @@ module.exports = {
     // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('correct');
     // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('wrong');
     // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('was-wrong');
+  },
+
+  'Assert stats' (client) {
+    // letterIdx < 10 --> wpm < 160
+    // cases: wrong/correct key, backspace on wrong correct/key
+    // wpm
+    // accuracy
+  },
+
+  'Assert adjust container hight' (client) {
+
+  },
+
+  'Assert adjust cursor hight' (client) {
+
   },
 
   'Assert navigate to finish page' (client) {

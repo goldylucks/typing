@@ -3,10 +3,10 @@ import { some } from 'lodash';
 
 export default class Text {
 
-  constructor (letters, onFinish) {
+  ignoredKeys = this.getIgnoredKeys();
+
+  constructor (letters) {
     this.letters = letters;
-    this.onFinish = onFinish;
-    document.addEventListener('keydown', this.onKeyDown);
   }
 
   render () {
@@ -24,9 +24,7 @@ export default class Text {
     this.renderLetters();
     this.$cursor = $('#cursor');
     this.$textContainer = $('#text-container');
-    this.setLetterIdx(0);
-    this._cursorInterval = setInterval(::this.cursorInterval, 300);
-    this.ignoredKeys = this.getIgnoredKeys();
+    this._cursorInterval = setInterval(this.cursorInterval, 300);
   }
 
   renderLetters () {
@@ -34,40 +32,43 @@ export default class Text {
     $('#text').append($letters);
   }
 
-  onKeyDown = evt => {
+  onKeyDown = (evt, letterIdx) => {
     const { key, ctrlKey, altKey } = evt;
     if (this.shouldIgnore(key, ctrlKey, altKey)) {
-      return;
+      return { shouldIgnore: true };
     }
-    evt.preventDefault();
-    this.$activeLetter.removeClass('active');
+
+    const $activeLetter = this.l(letterIdx);
+    $activeLetter.removeClass('active').addClass('dirty');
+    const $nextLetter = key === 'Backspace' ? this.l(letterIdx - 1) : this.l(letterIdx + 1);
+
     if (key === 'Backspace') {
-      this.setLetterIdx(this.letterIdx - 1); // mutates this.$activeLetter
-      this.$activeLetter.removeClass('wrong correct');
-      return;
+      if (letterIdx === 0) {
+        return;
+      }
+      const scoreChange = this.lWasCorrect($nextLetter) ? -1 : 0;
+      $nextLetter.removeClass('wrong correct');
+      this.adjustCursorPosition($nextLetter);
+      this.adjustTextContainerHeight($activeLetter, $nextLetter);
+      return { idxChange: -1, scoreChange };
     }
-    if (key === this.letters[this.letterIdx]) {
-      this.$activeLetter.removeClass('wrong').addClass('correct dirty');
+
+    const keyIsCorrect = key === this.letters[letterIdx];
+    const klass = keyIsCorrect ? 'correct' : 'wrong was-wrong';
+    const scoreChange = keyIsCorrect ? 1 : 0;
+    $activeLetter.addClass(klass);
+    const isFinished = this.endOfText(letterIdx + 1);
+    if (isFinished) {
+      this.onFinish();
     } else {
-      this.$activeLetter.removeClass('correct').addClass('wrong was-wrong dirty');
+      this.adjustCursorPosition($nextLetter);
+      this.adjustTextContainerHeight($activeLetter, $nextLetter);
     }
-    this.setLetterIdx(this.letterIdx + 1);
+    return { idxChange: 1, scoreChange, isFinished };
   }
 
-  setLetterIdx (newIdx) {
-    if (newIdx === -1) {
-      return;
-    }
-    if (this.endOfText(newIdx)) {
-      this.finish();
-      return;
-    }
-    this.letterIdx = newIdx;
-    this.$activeLetter = this.l(newIdx);
-    const prevTop = this.$cursor.position().top;
-    const { top, left } = this.$activeLetter.position();
-    this.$cursor.css({ top, left });
-    this.adjustTextContainerHeight(prevTop, top);
+  lWasCorrect ($activeLetter) {
+    return $activeLetter.attr('class').match('correct');
   }
 
   endOfText (idx) {
@@ -78,28 +79,34 @@ export default class Text {
     return $('#l-' + idx);
   }
 
-  cursorInterval () {
+  cursorInterval = () => {
     this.$cursor.toggleClass('active');
   }
 
-  adjustTextContainerHeight (prevCursorTop, cursorTop) {
+  adjustCursorPosition ($nextLetter) {
+    const { top, left } = $nextLetter.position();
+    this.$cursor.css({ top, left });
+  }
+
+  adjustTextContainerHeight ($activeLetter, $nextLetter) {
+    const prevTop = $activeLetter.position().top;
+    const { top } = $nextLetter.position();
     // todo [adgo] - handle backspacing to first line
-    if (cursorTop < 126) {
+    if (top < 126) {
       return;
     }
-    if (cursorTop > prevCursorTop) {
+    if (top > prevTop) {
       this.$textContainer.animate({ marginTop: '-=60px' }, 500);
       return;
     }
-    if (cursorTop < prevCursorTop) {
+    if (top < prevTop) {
       this.$textContainer.animate({ marginTop: '+=60px' }, 500);
       return;
     }
   }
 
-  finish () {
+  onFinish () {
     clearInterval(this._cursorInterval);
-    this.onFinish();
   }
 
   shouldIgnore (key, ctrlKey, altKey) {
@@ -110,7 +117,9 @@ export default class Text {
       return true;
     }
   }
+
   getIgnoredKeys () {
     return [ 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Shift', 'Control', 'CapsLock', 'Alt', 'Tab' ];
   }
+
 }
