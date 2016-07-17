@@ -2,7 +2,8 @@
   "texts": [
     {
         "title": "My awesome text",
-        "body": "Check my awesome text it is so fucking awesome!"
+        "body": "Check my awesome text it is so fucking awesome!",
+        "_id": "56f04089cab8bfde77c236d3"
     }
   ]
 }

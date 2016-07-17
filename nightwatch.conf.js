@@ -28,6 +28,9 @@ module.exports = {
     },
 
     'chrome': {
+      'globals': {
+        'retryAssertionTimeout': 3000
+      },
       'desiredCapabilities': {
         'browserName': 'chrome',
         'javascriptEnabled': true,
@@ -75,7 +78,7 @@ function saucelab (platform, browserName, browserVersion) {
     'silent': true,
     'output': true,
     'globals': {
-      'waitForConditionTimeout': 10000
+      'waitForConditionTimeout': 10000,
     },
     'screenshots': {
       'enabled': false,
