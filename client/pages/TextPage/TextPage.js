@@ -61,7 +61,7 @@ export default class TextPage {
     const { title } = this.textDoc;
     const wpm = stats.calcWpm(this.score);
     const seconds = stats.calcSeconds();
-    const accuracy = stats.calcAccuracy(this.letterIdx);
+    const accuracy = stats.calcAccuracy(this.score, this.letterIdx);
     document.removeEventListener('keydown', this.onKeyDown);
     emit('finishText', id, title, wpm, seconds, accuracy);
   }
