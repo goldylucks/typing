@@ -1,4 +1,3 @@
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('../config/config');
@@ -6,7 +5,7 @@ const override = require('method-override');
 
 module.exports = function (app) {
   if (config.logging) {
-    app.use(morgan('dev'));
+    app.use(require('morgan')('dev'));
   }
 
   app.use(bodyParser.urlencoded({ extended: true }));
