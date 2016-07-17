@@ -46,11 +46,11 @@ export default class AddTextPage {
     .always(() => $('#submit').removeAttr('disabled'));
   };
 
-  onSubmitSuccess (newText) {
+  onSubmitSuccess = newText => {
     route('/texts/' + newText._id);
   }
 
-  onSubmitError (error) {
+  onSubmitError = error => {
     $('#error').text(error);
   }
 
