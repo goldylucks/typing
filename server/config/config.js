@@ -6,13 +6,10 @@ const config = {
   test: 'testing',
   prod: 'production',
 
-  sys_password: 'sys',
+  sysPassword: process.env.SYS_PASSWORD || 'sysPass',
 
-  port: process.env.PORT || 3001,
+  port: process.env.PORT || 3001
 
-  db: {
-    url: 'mongodb://localhost/nodetyping'
-  }
 };
 
 process.env.NODE_ENV = process.env.NODE_ENV || config.dev;
