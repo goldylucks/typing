@@ -11,7 +11,7 @@ export default class Stats {
             <span id='wpm' class='letter'>0</span>
           </div>
           <div class='accuracy'>
-            accuracy
+            accuracy:
             <span class='letter'>
               <span id='accuracy'>0</span>%
             </span>

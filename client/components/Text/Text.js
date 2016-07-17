@@ -6,7 +6,7 @@ export default class Text {
   constructor (letters, onFinish) {
     this.letters = letters;
     this.onFinish = onFinish;
-    $(document).on('keydown', ::this.onKeyDown);
+    document.addEventListener('keydown', this.onKeyDown);
   }
 
   render () {
@@ -34,7 +34,7 @@ export default class Text {
     $('#text').append($letters);
   }
 
-  onKeyDown (evt) {
+  onKeyDown = evt => {
     const { key, ctrlKey, altKey } = evt;
     if (this.shouldIgnore(key, ctrlKey, altKey)) {
       return;
