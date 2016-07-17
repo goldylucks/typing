@@ -90,7 +90,8 @@ module.exports = {
     const plugins = [
       new webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify(ENV)
+          NODE_ENV: JSON.stringify(ENV),
+          IS_PROD: JSON.stringify(isProd)
         }
       })
     ];
