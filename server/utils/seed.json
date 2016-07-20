@@ -1,9 +1,37 @@
 {
+  "users": [
+    { "password": "pass1", "name": "Adam", "_id": "56f46358c558e7a529b0b42b" },
+    { "password": "pass2", "name": "Eve", "_id": "56f46365c558e7a529b0b42c" }
+  ],
+
   "texts": [
     {
-        "title": "My awesome text",
-        "body": "Check my awesome text it is so fucking awesome!",
+        "title": "Adam text 1 private",
+        "body": "Adam text 1 private Adam text 1 private Adam text 1 private Adam text 1 private",
+        "public": false,
+        "userId": "56f46358c558e7a529b0b42b",
         "_id": "56f04089cab8bfde77c236d3"
+    },
+    {
+        "title": "Adam text 2 public",
+        "body": "Adam text 2 public Adam text 2 public Adam text 2 public Adam text 2 public",
+        "public": true,
+        "userId": "56f46358c558e7a529b0b42b",
+        "_id": "56f045a7cab8bfde77c236d4"
+    },
+    {
+        "title": "Eve text 1 private",
+        "body": "Eve text 1 private Eve text 1 private Eve text 1 private Eve text 1 private",
+        "public": false,
+        "userId": "56f46365c558e7a529b0b42c",
+        "_id": "56f045b0cab8bfde77c236d5"
+    },
+    {
+        "title": "Eve text 1 public",
+        "body": "Eve text 1 public Eve text 1 public Eve text 1 public Eve text 1 public",
+        "public": true,
+        "userId": "56f46365c558e7a529b0b42c",
+        "_id": "56f045b7cab8bfde77c236d6"
     }
   ]
 }
