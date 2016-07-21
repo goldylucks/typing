@@ -1,3 +1,4 @@
+require('dotenv').config(); // dev/tests
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const express = require('express');
@@ -22,3 +23,5 @@ app.use(require('./middlewares/404Middleware'));
 
 app.listen(config.port);
 console.log('listening on port ' + config.port);
+
+module.exports = app;

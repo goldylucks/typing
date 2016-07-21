@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "description": "Typing!",
   "scripts": {
+    "test": "npm run test:server:w",
+    "test:server": "NODE_ENV=testing mocha server/**/*.spec.js",
+    "test:server:w": "npm run test:server -- -w",
+    "test:client": "NODE_ENV=testing mocha client/**/*.spec.js",
+    "test:client:w": "npm run test:client -- -w",
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
     "lint": "eslint --ignore-path .gitignore .",
     "server": "nodemon server/server.js --ignore client/",
     "server:prod": "NODE_ENV=production node server/server.js",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack --progress --colors",
-    "e2e:ci": "NODE_ENV=tests nightwatch -e saucelabs-ie-9,saucelabs-ie-10,saucelabs-ie-11,saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac,saucelabs-firefox-win,saucelabs-firefox-linux,saucelabs-firefox-mac,saucelabs-safari-mac",
-    "e2e": "NODE_ENV=tests nightwatch -e chrome",
+    "e2e:ci": "NODE_ENV=testing nightwatch -e saucelabs-ie-9,saucelabs-ie-10,saucelabs-ie-11,saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac,saucelabs-firefox-win,saucelabs-firefox-linux,saucelabs-firefox-mac,saucelabs-safari-mac",
+    "e2e": "NODE_ENV=testing nightwatch -e chrome",
     "clean": "rm build -rf"
   },
   "license": "MIT",
@@ -34,10 +39,12 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "6.9.0",
     "babel-runtime": "^6.5.0",
-    "chai": "3.5.0",
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
     "chromedriver": "^2.21.2",
     "css-loader": "^0.23.1",
     "deasync": "^0.1.7",
+    "dotenv": "^2.0.0",
     "eslint": "^2.13.1",
     "eslint-config-semistandard": "^6.0.1",
     "eslint-config-standard": "^5.3.1",
@@ -61,18 +68,24 @@
     "sinon": "1.17.3",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.0",
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^3.2.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.7.1"
   },
   "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.15.2",
     "colors": "^1.1.2",
     "cors": "^2.7.1",
     "event-emitter": "^0.3.4",
     "express": "^4.14.0",
+    "express-jwt": "^3.4.0",
     "jquery": "^3.0.0",
+    "jsonwebtoken": "^7.1.6",
     "lodash": "^4.13.1",
     "method-override": "^2.3.6",
     "mongodb": "^2.2.1",
@@ -88,8 +101,8 @@
         "npm run lint"
       ],
       "post-commit": [],
-      "post-checkout": "npm install",
-      "post-merge": "npm install"
+      "post-checkout": "",
+      "post-merge": ""
     }
   }
 }

@@ -1,10 +1,10 @@
 const Texts = require('./textsModel');
 
 module.exports = {
-  get: get,
-  getOne: getOne,
-  post: post,
-  put: put
+  get,
+  getOne,
+  post,
+  put
 };
 
 function get (req, res, next) {
@@ -14,8 +14,7 @@ function get (req, res, next) {
 }
 
 function getOne (req, res, next) {
-  const id = req.params.id;
-  console.log(req.params);
+  const { id } = req.params;
   Texts.findById(id)
     .then(text => text ? res.json(text) : res.status(404).send('text doesn\'t exist'))
     .catch(next);
