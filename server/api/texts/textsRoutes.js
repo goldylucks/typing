@@ -3,11 +3,11 @@ const controller = require('./textsController');
 const usersService = require('../users/usersService');
 
 router.route('/')
-  .get(controller.get)
-  .post(usersService.decodeToken, usersService.addUserIdToBody, controller.post);
+  .get(usersService.decodeToken, controller.get)
+  .post(usersService.decodeToken, controller.post);
 
 router.route('/:id')
   .get(controller.getOne)
-  .put(usersService.decodeToken, usersService.addUserIdToBody, controller.getOne);
+  .put(usersService.decodeToken, controller.getOne);
 
 module.exports = router;
