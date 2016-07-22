@@ -5,6 +5,9 @@ const config = {
   dev: 'development',
   test: 'testing',
   prod: 'production',
+  secrets: {
+    jwt: process.env.JWT_SECRET
+  },
 
   sysPassword: process.env.SYS_PASSWORD || 'sysPass',
 
