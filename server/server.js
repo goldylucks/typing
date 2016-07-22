@@ -21,7 +21,10 @@ app.use('/api', api);
 app.use(require('./middlewares/errorMiddleware'));
 app.use(require('./middlewares/404Middleware'));
 
-app.listen(config.port);
+if (!module.parent) {
+  app.listen(config.port);
+}
+
 console.log('listening on port ' + config.port);
 
 module.exports = app;

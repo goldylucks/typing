@@ -44,7 +44,7 @@ describe('api/users', () => {
           const user = res.body;
           expect(user.name).to.equal(seedUsers[0].name);
           expect(user.password).to.be.undefined;
-          done()
+          done();
         })
         .catch(err => {
           SHOUT('test err', err);
@@ -62,7 +62,7 @@ describe('api/users', () => {
           expect(users).to.be.an('array');
           expect(users).to.have.length.above(1);
           users.forEach(u => expect(u.password).to.be.undefined);
-          done()
+          done();
         })
         .catch(err => {
           SHOUT('test err', err);
