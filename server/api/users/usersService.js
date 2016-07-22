@@ -7,7 +7,6 @@ const User = require('../users/usersModel');
 module.exports = {
   signToken,
   decodeToken,
-  addUserIdToBody,
   isOwner,
   isSystem,
   getFreshUser
@@ -23,15 +22,6 @@ function decodeToken (req, res, next) {
   }
 
   checkToken(req, res, next);
-}
-
-function addUserIdToBody (req, res, next) {
-  if (!req.user || !req.body) {
-    next();
-    return;
-  }
-  req.body.userId = req.user._id;
-  next();
 }
 
 function isOwner (req, res, next) {

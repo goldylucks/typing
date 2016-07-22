@@ -8,6 +8,6 @@ router.route('/')
 
 router.route('/:id')
   .get(controller.getOne)
-  .put(service.decodeToken, service.addUserIdToBody, service.isOwner, controller.put);
+  .put(service.decodeToken, service.isOwner, controller.put);
 
 module.exports = router;
