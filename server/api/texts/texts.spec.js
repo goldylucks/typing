@@ -33,8 +33,13 @@ describe('api/texts', () => {
           expect(text.public).to.equal(false);
           expect(text.userId).to.equal(adam._id);
           done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
+          done();
         });
     });
+
     it('should get my public text', done => {
       const _text = seedTexts[1];
       app
@@ -48,8 +53,13 @@ describe('api/texts', () => {
           expect(text.public).to.equal(true);
           expect(text.userId).to.equal(adam._id);
           done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
+          done();
         });
     });
+
     it('should NOT get eve`s PRIVATE text', done => {
       const _text = seedTexts[2];
       app
@@ -57,6 +67,10 @@ describe('api/texts', () => {
         .set('Authorization', 'Bearer ' + adam.token)
         .then(res => {
           expect(res.status).to.equal(401);
+          done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
           done();
         });
     });
@@ -72,6 +86,10 @@ describe('api/texts', () => {
           expect(text._id).to.equal(_text._id);
           expect(text.public).to.equal(true);
           expect(text.userId).to.equal(eve._id);
+          done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
           done();
         });
     });
@@ -93,6 +111,10 @@ describe('api/texts', () => {
             expect(t.userId).to.be.undefined;
           });
           done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
+          done();
         });
     });
   });
@@ -113,6 +135,10 @@ describe('api/texts', () => {
           expect(text.userId).to.be.undefined;
           expect(text._id).to.be.a('string');
           done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
+          done();
         });
     });
 
@@ -131,6 +157,10 @@ describe('api/texts', () => {
           expect(text.public).to.equal(false);
           expect(text.userId).to.equal(adam._id);
           expect(text._id).to.be.a('string');
+          done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
           done();
         });
     });

@@ -6,7 +6,7 @@ const app = request(server);
 
 const seedData = require('../../utils/seed.json');
 
-describe('[USERS]', () => {
+describe('api/users', () => {
   const BASE_URL = '/api/users';
   let seedUsers;
 
@@ -14,7 +14,7 @@ describe('[USERS]', () => {
     seedUsers = _.cloneDeep(seedData.users);
   });
 
-  describe('[POST]', () => {
+  describe('post', () => {
     const name = 'test user';
     const password = 'test password';
     it('should create a user', done => {
@@ -28,22 +28,32 @@ describe('[USERS]', () => {
           expect(user.password).to.be.undefined;
           expect(user.token).to.be.a('string');
           done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
+          done();
         });
     });
   });
 
-  it('should get a user', done => {
-    app
-      .get(`${BASE_URL}/${seedUsers[0]._id}`)
-      .then(res => {
-        const user = res.body;
-        expect(user.name).to.equal(seedUsers[0].name);
-        expect(user.password).to.be.undefined;
-        done();
-      });
+  describe('getOne', () => {
+    it('should get a user', done => {
+      app
+        .get(`${BASE_URL}/${seedUsers[0]._id}`)
+        .then(res => {
+          const user = res.body;
+          expect(user.name).to.equal(seedUsers[0].name);
+          expect(user.password).to.be.undefined;
+          done()
+        })
+        .catch(err => {
+          SHOUT('test err', err);
+          done();
+        });
+    });
   });
 
-  describe('[GET]', () => {
+  describe('get', () => {
     it('should get users', done => {
       app
         .get(BASE_URL)
@@ -52,12 +62,16 @@ describe('[USERS]', () => {
           expect(users).to.be.an('array');
           expect(users).to.have.length.above(1);
           users.forEach(u => expect(u.password).to.be.undefined);
+          done()
+        })
+        .catch(err => {
+          SHOUT('test err', err);
           done();
         });
     });
   });
 
-  describe('[PUT]', () => {
+  describe('put', () => {
     it('should update a user of it\'s owner', done => {
       const updatedName = 'josh';
       app
@@ -71,6 +85,10 @@ describe('[USERS]', () => {
         })
         .then(res => {
           expect(res.body.name).to.equal(updatedName);
+          done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
           done();
         });
     });
@@ -89,6 +107,10 @@ describe('[USERS]', () => {
         })
         .then(res => {
           expect(res.body.name).to.equal(adam.name);
+          done();
+        })
+        .catch(err => {
+          SHOUT('test err', err);
           done();
         });
     });

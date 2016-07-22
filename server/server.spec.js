@@ -4,7 +4,7 @@ const server = require('./server');
 const app = request(server);
 const seedData = require('./utils/seed.json');
 
-describe('[SERVER]', () => {
+describe('server', () => {
   const adam = seedData.users[0];
 
   afterEach(() => {
@@ -19,6 +19,10 @@ describe('[SERVER]', () => {
       .set('Authorization', 'Bearer ' + adam.token)
       .then(resp => {
         expect(resp.error.text).to.equal('err: texts validation failed');
+        done();
+      })
+      .catch(err => {
+        SHOUT('test err', err);
         done();
       });
   });

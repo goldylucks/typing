@@ -6,7 +6,8 @@
     "node": true
   },
   "globals": {
-    "expect": true
+    "expect": true,
+    "SHOUT": true
   },
   "rules": {
     "object-curly-spacing": ["error", "always"],
