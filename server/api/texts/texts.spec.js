@@ -56,8 +56,7 @@ describe('api/texts', () => {
         .get(`${BASE_URL}/${_text._id}`)
         .set('Authorization', 'Bearer ' + adam.token)
         .then(res => {
-          expect(res.status).to.equal(404);
-          expect(res.body).to.be.undefined;
+          expect(res.status).to.equal(401);
           done();
         });
     });
@@ -86,8 +85,8 @@ describe('api/texts', () => {
         .then(res => {
           const texts = res.body;
           expect(texts).to.be.an('array');
-          expect(texts).to.have.length.equal(3);
-          texts.each(t => {
+          expect(texts).to.have.length(3);
+          texts.forEach(t => {
             expect(t.title).to.be.a('string');
             expect(t._id).to.be.a('string');
             expect(t.body).to.be.undefined;
@@ -99,25 +98,39 @@ describe('api/texts', () => {
   });
 
   describe('post', () => {
-    const title = 'Test title';
-    const body = 'Test body';
-
-    it('should post a text', done => {
+    it('should post a public guest text with no userId', done => {
+      const title = 'Guest title (public)';
+      const body = 'Guest body';
       app
         .post(BASE_URL)
-        .set('Authorization', 'Bearer ' + adam.token)
         .send({ body, title })
         .then(res => {
           expect(res.status).to.equal(201);
           const text = res.body;
-          console.log('******************');
-          console.log(text);
-          console.log('******************');
           expect(text.title).to.equal(title);
           expect(text.body).to.equal(body);
           expect(text.public).to.equal(true);
+          expect(text.userId).to.be.undefined;
+          expect(text._id).to.be.a('string');
+          done();
+        });
+    });
+
+    it('should post my text', done => {
+      const title = 'Adams posted title (private)';
+      const body = 'Adams posted body';
+      app
+        .post(BASE_URL)
+        .set('Authorization', 'Bearer ' + adam.token)
+        .send({ body, title, public: false })
+        .then(res => {
+          expect(res.status).to.equal(201);
+          const text = res.body;
+          expect(text.title).to.equal(title);
+          expect(text.body).to.equal(body);
+          expect(text.public).to.equal(false);
           expect(text.userId).to.equal(adam._id);
-          expect(text._id).to.not.be.undefined;
+          expect(text._id).to.be.a('string');
           done();
         });
     });

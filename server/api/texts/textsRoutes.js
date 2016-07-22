@@ -7,7 +7,7 @@ router.route('/')
   .post(usersService.decodeToken, controller.post);
 
 router.route('/:id')
-  .get(controller.getOne)
+  .get(usersService.decodeToken, controller.getOne)
   .put(usersService.decodeToken, controller.getOne);
 
 module.exports = router;
