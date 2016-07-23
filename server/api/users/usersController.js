@@ -1,10 +1,14 @@
+const bcrypt = require('bcrypt');
+const CustomError = require('custom-error-generator');
+
 const service = require('./usersService');
 const User = require('./usersModel');
 
 module.exports = {
   get,
   getOne,
-  post,
+  login,
+  post, // signup
   put
 };
 
@@ -18,6 +22,26 @@ function getOne (req, res, next) {
   const { id } = req.params;
   User.findById(id)
     .then(user => user ? res.json(user) : res.status(404).send("user doesn't exist"))
+    .catch(next);
+}
+
+function login (req, res, next) {
+  const { email, password } = req.body;
+  User.findOne({ email }).select('+password')
+    .then(user => {
+      if (!user || !bcrypt.compareSync(password, user.password)) {
+        throw new CustomError('custom error', {
+          code: 404
+        })('user with that email does not exist or password is incorrect');
+      }
+      return user;
+    })
+    .then(user => {
+      user = user.toObject();
+      delete user.password;
+      user.token = service.signToken(user._id);
+      res.json(user);
+    })
     .catch(next);
 }
 

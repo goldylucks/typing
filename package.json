@@ -81,6 +81,7 @@
     "body-parser": "^1.15.2",
     "colors": "^1.1.2",
     "cors": "^2.7.1",
+    "custom-error-generator": "^7.0.0",
     "event-emitter": "^0.3.4",
     "express": "^4.14.0",
     "express-jwt": "^3.4.0",
@@ -90,6 +91,7 @@
     "method-override": "^2.3.6",
     "mongodb": "^2.2.1",
     "mongoose": "^4.5.3",
+    "mongoose-type-email": "^1.0.2",
     "raw-loader": "^0.5.1"
   },
   "config": {
