@@ -1,10 +1,16 @@
 import $ from 'jquery';
 import { API_URL } from '../../constants/constants';
+import AuthModal from '../../components/AuthModal';
 
 export default class TextPage {
 
+  constructor () {
+    this.authModal = new AuthModal();
+  }
+
   init () {
     this.render();
+    this.renderAuth();
     this.fetchTexts()
       .then(texts => {
         this.renderNav(texts);
@@ -18,9 +24,15 @@ export default class TextPage {
   html () {
     return `
       <h1>Main Page!</h1>
+      <div id='auth'>Loading auth ...</div>
       <a class='addPage' href='/add-text'>Add</a>
       <div id=texts>Loading Texts ...</div>
     `;
+  }
+
+  renderAuth () {
+    $('#auth').html(this.authModal.render());
+    this.authModal.init();
   }
 
   renderNav (texts) {
