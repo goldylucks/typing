@@ -1,14 +1,12 @@
 import $ from 'jquery';
-import { API_URL } from '../../constants/constants';
+import httpService from '../../services/httpService';
 
 export default class TextPage {
 
   init () {
     this.render();
     this.fetchTexts()
-      .then(texts => {
-        this.renderNav(texts);
-      });
+      .then(this.renderNav);
   }
 
   render () {
@@ -36,8 +34,6 @@ export default class TextPage {
   }
 
   fetchTexts () {
-    return new Promise((resolve, reject) => {
-      return $.get(`${API_URL}/texts`, texts => resolve(texts));
-    });
+    return httpService.GET('texts');
   }
 }

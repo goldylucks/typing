@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { emit } from '../../utils/utils';
 import Text from '../../components/Text';
 import Stats from '../../components/Stats';
-import { API_URL } from '../../constants/constants';
+import httpService from '../../services/httpService';
 
 export default class TextPage {
 
@@ -67,9 +67,7 @@ export default class TextPage {
   }
 
   fetchText () {
-    return new Promise((resolve, reject) => {
-      return $.get(`${API_URL}/texts/${this.id}`, textToType => resolve(textToType));
-    });
+    return httpService.GET(`texts/${this.id}`);
   }
 
   idFromWindow () {
