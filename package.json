@@ -97,7 +97,6 @@
   "config": {
     "pre-git": {
       "pre-commit": [
-        "scripts/protect-master.sh"
       ],
       "pre-push": [
         "npm run lint"
