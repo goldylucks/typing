@@ -39,7 +39,7 @@ export default class MainPage {
           <strong>NOTE:</strong> This is NOT a tutorial / beginner's guide for blind typing. If u r totally new to blind typing, I recommended <a href='//typingclub.com' target='_blank'>this</a> resource (it's how I got started).
         </div>
         <div>
-          Don't have a text of your own? Try the <a href='/texts-nav'>existing texts</a> instead.
+          Don't have a text of your own? Try the <a href='/nav'>existing texts</a> instead.
         </div>
       </div>
     `;

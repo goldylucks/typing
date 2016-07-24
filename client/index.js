@@ -31,7 +31,7 @@ function Page (pathname) {
     return AddTextPage;
   }
 
-  if (pathname.match('/texts-nav')) {
+  if (pathname.match('/nav')) {
     return NavPage;
   }
 
