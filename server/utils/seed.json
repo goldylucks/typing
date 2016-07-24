@@ -1,7 +1,7 @@
 {
   "users": [
-    { "password": "pass1", "name": "Adam", "_id": "56f46358c558e7a529b0b42b", "email": "adam_test_typing@gmail.com" },
-    { "password": "pass2", "name": "Eve", "_id": "56f46365c558e7a529b0b42c", "email": "eve_test_typing@gmail.com" }
+    { "password": "pass1", "name": "Adam", "_id": "56f46358c558e7a529b0b42b", "email": "adam@gmail.com" },
+    { "password": "pass2", "name": "Eve", "_id": "56f46365c558e7a529b0b42c", "email": "eve@gmail.com" }
   ],
 
   "texts": [
