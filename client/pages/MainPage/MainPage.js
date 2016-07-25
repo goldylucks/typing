@@ -63,7 +63,7 @@ export default class MainPage {
       return;
     }
     evt.preventDefault();
-    alert('Register to add a private text');
+    window.alert('Register to add a private text'); // eslint-disable-line no-alert
     // TODO :: open auth modal
   }
 
