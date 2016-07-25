@@ -1,6 +1,6 @@
 module.exports = {
   'src_folders': ['./test/e2e'],
-  'output_folder': 'reports',
+  'output_folder': false,
   'custom_commands_path': '',
   'custom_assertions_path': '',
   'page_objects_path': '',
@@ -8,7 +8,7 @@ module.exports = {
 
   'selenium': {
     'start_process': true,
-    'server_path': 'node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.53.0.jar',
+    'server_path': 'node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.53.1.jar',
     'log_path': '',
     'host': '127.0.0.1',
     'port': 4444,

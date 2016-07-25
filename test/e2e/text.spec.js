@@ -1,14 +1,17 @@
 'use strict';
 
-const url = 'http://localhost:3000/texts/' + '56f04089cab8bfde77c236d3';
-const finishUrl = 'http://localhost:3000/finish/' + '56f04089cab8bfde77c236d3';
-const text = 'Check my awesome text it is so fucking awesome!';
+const seedData = require('../../server/utils/seed.json');
+const text = seedData.texts[1];
+
+const url = 'http://localhost:3000/texts/' + text._id;
+const finishUrl = 'http://localhost:3000/finish/' + text._id;
 
 module.exports = {
   tags: ['Text Page'],
 
   before (client) {
     client.url(url).waitForElementVisible('body', 1000);
+    client.url(url).waitForElementVisible('#text-container', 1000);
   },
 
   'Assert url' (client) {
@@ -16,7 +19,7 @@ module.exports = {
   },
 
   'Assert ui' (client) {
-    client.expect.element('#text-container').text.to.contain(text);
+    client.expect.element('#text-container').text.to.contain(text.body);
     client.expect.element('.wpm').text.to.contain('wpm:');
     client.expect.element('#wpm').text.to.equal('0');
     client.expect.element('.accuracy').text.to.contain('accuracy: 0%');
@@ -84,7 +87,7 @@ module.exports = {
   },
 
   'Assert navigate to finish page' (client) {
-    client.keys(text.slice(0));
+    client.keys(text.body.slice(0));
     client.assert.urlEquals(finishUrl);
   },
 

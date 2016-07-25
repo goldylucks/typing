@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { route } from '../../utils/utils';
-import { API_URL } from '../../constants/constants';
+import httpService from '../../services/httpService';
 
 export default class AddTextPage {
 
@@ -22,7 +22,7 @@ export default class AddTextPage {
         <div class='header'></div>
         <form id='form'>
           <input id='title' required placeholder='title' />
-          <input id='public' type='checkbox' required /> Public
+          <input id='public' type='checkbox' checked required /> Public
           <br />
           <textarea id='body' placeholder='text goes here ...' required></textarea>
           <br />
@@ -36,14 +36,14 @@ export default class AddTextPage {
   onSubmit = () => {
     $('#error').text('');
     $('#submit').attr('disabled', true);
-    $.post(`${API_URL}/texts`, {
+    httpService.POST('texts', {
       title: $('#title').val(),
       body: $('#body').val(),
       public: $('#public').val()
     })
-    .done(this.onSubmitSuccess)
-    .fail(this.onSubmitError)
-    .always(() => $('#submit').removeAttr('disabled'));
+    .then(this.onSubmitSuccess)
+    .catch(this.onSubmitError)
+    .then(() => $('#submit').removeAttr('disabled'));
   };
 
   onSubmitSuccess = newText => {

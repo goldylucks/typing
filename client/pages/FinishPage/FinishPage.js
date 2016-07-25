@@ -39,9 +39,8 @@ export default class FinishPage {
           </div>
         </div>
         <div class='actions'>
-          <a href=/main>menu</a>
+          <a href=/nav>menu</a>
           <a href=/texts/${id}>redo</a>
-          <a onclick=console.log('foo')>next</a>
         </div>
       </div>
     `;
