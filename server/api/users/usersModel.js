@@ -12,10 +12,7 @@ module.exports = mongoose.model('users', UsersSchema);
 function getSchema () {
   return new Schema({
 
-    name: {
-      type: String,
-      required: true
-    },
+    name: String,
 
     email: {
       type: mongoose.SchemaTypes.Email,
