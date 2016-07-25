@@ -1,12 +1,18 @@
 import $ from 'jquery';
+import AuthModal from '../../components/AuthModal';
 import httpService from '../../services/httpService';
 import userService from '../../services/userService';
 import { route } from '../../utils/utils';
 
 export default class MainPage {
 
+  constructor () {
+    this.authModal = new AuthModal();
+  }
+
   init () {
     this.render();
+    this.renderAuth();
     $(document).on('click', '#submit', this.onAdd);
     $(document).on('click', '#public', this.onPublicToggle);
   }
