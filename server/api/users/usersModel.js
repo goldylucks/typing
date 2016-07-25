@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('mongoose-type-email');
 const bcrypt = require('bcrypt-as-promised');
 const Schema = mongoose.Schema;
 
@@ -16,6 +17,11 @@ function getSchema () {
       required: true
     },
 
+    email: {
+      type: mongoose.SchemaTypes.Email,
+      required: true
+    },
+
     password: {
       type: String,
       select: false,
@@ -30,5 +36,6 @@ function preSave (next) {
     .then(hash => {
       this.password = hash;
       next();
-    });
+    })
+    .catch(next);
 }

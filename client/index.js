@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import './index.html';
 import { onEmit } from './utils/utils';
+import NavPage from './pages/NavPage';
 import TextPage from './pages/TextPage';
 import MainPage from './pages/MainPage';
 import FinishPage from './pages/FinishPage';
@@ -28,6 +29,10 @@ function Page (pathname) {
 
   if (pathname.match('/add-text')) {
     return AddTextPage;
+  }
+
+  if (pathname.match('/nav')) {
+    return NavPage;
   }
 
   return MainPage;
