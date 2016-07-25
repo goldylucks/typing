@@ -43,7 +43,7 @@ export default class AddTextPage {
     })
     .then(this.onSubmitSuccess)
     .catch(this.onSubmitError)
-    .finally(() => $('#submit').removeAttr('disabled'));
+    .then(() => $('#submit').removeAttr('disabled'));
   };
 
   onSubmitSuccess = newText => {

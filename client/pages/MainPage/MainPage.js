@@ -27,7 +27,7 @@ export default class MainPage {
             <input id='title' placeholder='text title' />
           </div>
           <div class='form-control'>
-            <textarea id='text' placeholder='paste your text here to start practicing'></textarea>
+            <textarea id='body' placeholder='paste your text here to start practicing'></textarea>
           </div>
           <div class='form-control'>
             <input id='public' type='checkbox' checked /> Public
@@ -55,7 +55,7 @@ export default class MainPage {
     })
     .then(this.onSubmitSuccess)
     .catch(this.onSubmitError)
-    .finally(() => $('#submit').removeAttr('disabled'));
+    .then(() => $('#submit').removeAttr('disabled'));
   }
 
   onPublicToggle = evt => {
