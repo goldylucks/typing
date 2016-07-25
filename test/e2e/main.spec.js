@@ -29,6 +29,15 @@ module.exports = {
   'Assert nav link' (client) {
     client.click('[href="/nav"]');
     client.assert.urlEquals(navUrl);
+    client.url(url).waitForElementVisible('body', 1000);
+  },
+
+  'Assert typingclub link' (client) {
+    client.click('[href="//typingclub.com"]');
+    client.window_handles(result => {
+      client.switchWindow(result.value[1]);
+      client.assert.urlContains('typingclub.com');
+    });
   },
 
   after (client) {
