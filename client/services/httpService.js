@@ -5,36 +5,62 @@ class HttpService {
 
   GET (pathname) {
     return new Promise((resolve, reject) => {
-      return $.get(`${API_URL}/${pathname}`).done(resolve).fail(reject);
+      return $.ajax({
+        method: 'GET',
+        url: `${API_URL}/${pathname}`,
+        headers: {
+          Authorization: this.token()
+        }
+      }).done(resolve).fail(reject);
     });
   }
 
   POST (pathname, data) {
     return new Promise((resolve, reject) => {
-      return $.post(`${API_URL}/${pathname}`, data).done(resolve).fail(reject);
+      return $.ajax({
+        method: 'POST',
+        url: `${API_URL}/${pathname}`,
+        data,
+        headers: {
+          Authorization: this.token()
+        }
+      }).done(resolve).fail(reject);
     });
   }
 
   PUT (pathname, data) {
     return new Promise((resolve, reject) => {
-      return $.put(`${API_URL}/${pathname}`, data).done(resolve).fail(reject);
+      return $.ajax({
+        method: 'PUT',
+        url: `${API_URL}/${pathname}`,
+        data,
+        headers: {
+          Authorization: this.token()
+        }
+      }).done(resolve).fail(reject);
     });
   }
 
   DELETE (pathname) {
     return new Promise((resolve, reject) => {
-      return $.del(`${API_URL}/${pathname}`).done(resolve).fail(reject);
+      return $.ajax({
+        method: 'DELETE',
+        url: `${API_URL}/${pathname}`,
+        headers: {
+          Authorization: this.token()
+        }
+      }).done(resolve).fail(reject);
     });
   }
 
-  addCurrentUser () {
+  token () {
     const user = global.localStorage.getItem('user');
     if (!user) {
       return;
     }
     try {
       const { token } = JSON.parse(user);
-      return `BEARER ${token}`;
+      return `Bearer ${token}`;
     } catch (err) {
       console.warn('[HTTP SERVICE] error parsing user from LS', user, err);
       return;

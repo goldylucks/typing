@@ -21,12 +21,11 @@ function decodeToken (req, res, next) {
     req.headers.authorization = 'Bearer ' + req.query.access_token;
   }
 
-  const { authorization } = req.headers;
+  const authorization = req.headers.authorization || req.headers.Authorization;
   if (!authorization || !authorization.match('Bearer ')) {
     next();
     return;
   }
-
   checkToken(req, res, next);
 }
 
