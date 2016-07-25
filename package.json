@@ -4,6 +4,7 @@
   "description": "Typing!",
   "scripts": {
     "test": "npm run test:server:w",
+    "test:ci": "npm run test:server",
     "test:server": "NODE_ENV=testing mocha server/**/*.spec.js",
     "test:server:w": "npm run test:server -- -w",
     "test:client": "NODE_ENV=testing mocha client/**/*.spec.js",
@@ -90,14 +91,14 @@
     "lodash": "^4.13.1",
     "method-override": "^2.3.6",
     "mongodb": "^2.2.1",
-    "mongoose": "^4.5.3",
+    "mongoose": "^4.5.6",
     "mongoose-type-email": "^1.0.2",
-    "raw-loader": "^0.5.1"
+    "raw-loader": "^0.5.1",
+    "selenium-server-standalone-jar": "^2.53.1"
   },
   "config": {
     "pre-git": {
-      "pre-commit": [
-      ],
+      "pre-commit": [],
       "pre-push": [
         "npm run lint"
       ],
