@@ -22,7 +22,7 @@ export default class AddTextPage {
         <div class='header'></div>
         <form id='form'>
           <input id='title' required placeholder='title' />
-          <input id='public' type='checkbox' required /> Public
+          <input id='public' type='checkbox' checked required /> Public
           <br />
           <textarea id='body' placeholder='text goes here ...' required></textarea>
           <br />
