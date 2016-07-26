@@ -41,9 +41,9 @@ matrix:
     addons:
       sauce_connect: true
   
-cache:
-  directories:
-    - node_modules
+# cache:
+#   directories:
+#     - node_modules
 
 script:
   - if [ "$SCRIPT" ]; then npm run $SCRIPT; fi
