@@ -6,7 +6,7 @@ const config = {
   test: 'testing',
   prod: 'production',
   secrets: {
-    jwt: process.env.JWT_SECRET || 'jwt_secret'
+    jwt: process.env.JWT_SECRET || 'JWT_SECRET'
   },
 
   sysPassword: process.env.SYS_PASSWORD || 'sysPass',
