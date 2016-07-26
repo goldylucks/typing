@@ -28,13 +28,13 @@ matrix:
   include:
   - env: SCRIPT=lint
   - env: SCRIPT=test:ci
-  - env: E2E=true
+  - env: E2E=true DB_URL=mongodb://127.0.0.1:27017
     addons:
       sauce_connect: true
   
-# cache:
-#   directories:
-#     - node_modules
+cache:
+  directories:
+    - node_modules
 
 script:
   - if [ "$SCRIPT" ]; then npm run $SCRIPT; fi
