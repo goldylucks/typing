@@ -38,14 +38,14 @@ module.exports = {
   'Assert keys class' (client) {
     client.expect.element('#l-0').to.have.attribute('class').equals('letter');
     // test correct letter
-    client.keys(['C']);
-    client.expect.element('#l-0').to.have.attribute('class').contains('letter dirty').before(20000);
+    // client.keys(['C']);
+    // client.expect.element('#l-0').to.have.attribute('class').contains('letter dirty').before(20000);
     // client.expect.element('#l-0').to.have.attribute('class').which.contains('correct');
     // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('wrong');
     // test wrong letter
-    client.keys(['H']);
-    client.expect.element('#l-1').to.have.attribute('class').contains('letter dirty wrong was-wrong').before(20000);
-    client.expect.element('#l-1').to.have.attribute('class').not.contains('correct');
+    // client.keys(['H']);
+    // client.expect.element('#l-1').to.have.attribute('class').contains('letter dirty wrong was-wrong').before(20000);
+    // client.expect.element('#l-1').to.have.attribute('class').not.contains('correct');
   },
 
   'Assert stats' (client) {
