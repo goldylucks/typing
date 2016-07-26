@@ -3,14 +3,10 @@ language: node_js
 node_js:
   - 'node'
 
-install:
-- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
-
 services: mongodb
 
 env:
   - CXX=g++-4.8
-  - CC=g-4.8
 
 addons:
   apt:
@@ -18,7 +14,6 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-      - gcc-4.8
 
 env:
   global:
