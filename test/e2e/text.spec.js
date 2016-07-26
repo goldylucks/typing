@@ -10,8 +10,8 @@ module.exports = {
   tags: ['TextPage'],
 
   before (client) {
-    client.url(url).waitForElementVisible('body', 1000);
-    client.url(url).waitForElementVisible('#text-container', 1000);
+    client.url(url).waitForElementVisible('body', 5000);
+    client.url(url).waitForElementVisible('#text-container', 5000);
   },
 
   'Assert url' (client) {

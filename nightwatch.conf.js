@@ -78,7 +78,8 @@ function saucelab (platform, browserName, browserVersion) {
     'silent': true,
     'output': true,
     'globals': {
-      'waitForConditionTimeout': 10000
+      'waitForConditionTimeout': 10000,
+      'retryAssertionTimeout': 3000
     },
     'screenshots': {
       'enabled': false,
@@ -89,7 +90,9 @@ function saucelab (platform, browserName, browserVersion) {
       'build': 'build-${TRAVIS_JOB_NUMBER}',
       'name': 'typing',
       'browserName': browserName,
+      'unexpectedAlertBehaviour': 'accept',
       'platform': platform,
+      'cssSelectorsEnabled': true,
       'javascriptEnabled': true,
       'databaseEnabled': true,
       'locationContextEnabled': true,

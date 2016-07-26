@@ -11,7 +11,7 @@ module.exports = {
   tags: ['AddPage'],
 
   before (client) {
-    client.url(url).waitForElementVisible('body', 1000);
+    client.url(url).waitForElementVisible('body', 5000);
     client.assert.urlEquals(url);
   },
 
@@ -19,10 +19,10 @@ module.exports = {
     client.setValue('#title', text.title);
     client.setValue('#body', text.body);
     client.click('#submit');
-    client.waitForElementVisible('#text-container', 1000);
+    client.waitForElementVisible('#text-container', 5000);
     client.assert.urlContains(textUrl);
     client.expect.element('#text').text.to.equal(text.body);
-    client.url(url).waitForElementVisible('body', 1000);
+    client.url(url).waitForElementVisible('body', 5000);
   },
 
   after (client) {

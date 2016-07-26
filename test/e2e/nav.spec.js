@@ -5,13 +5,13 @@ module.exports = {
   tags: ['NavPage'],
 
   before (client) {
-    client.url(url).waitForElementVisible('body', 1000);
+    client.url(url).waitForElementVisible('body', 5000);
   },
 
   'Assert add link' (client) {
     client.click('[href="/add-text"]');
     client.assert.urlEquals(addUrl);
-    client.url(url).waitForElementVisible('body', 1000);
+    client.url(url).waitForElementVisible('body', 5000);
   },
 
   'Assert links' (client) {
