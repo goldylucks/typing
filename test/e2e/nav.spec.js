@@ -8,10 +8,15 @@ module.exports = {
     client.url(url).waitForElementVisible('body', 20000);
   },
 
+  'Assert url' (client) {
+    client.assert.urlEquals(url);
+  },
+
   'Assert add link' (client) {
     client.waitForElementVisible('[href="/add-text"]', 20000);
     client.click('[href="/add-text"]');
     client.assert.urlEquals(addUrl);
+    // go back
     client.url(url).waitForElementVisible('body', 20000);
   },
 
