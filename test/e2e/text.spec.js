@@ -4,7 +4,7 @@ const seedData = require('../../server/utils/seed.json');
 const text = seedData.texts[1];
 
 const url = 'http://localhost:3000/texts/' + text._id;
-const finishUrl = 'http://localhost:3000/finish/' + text._id;
+// const finishUrl = 'http://localhost:3000/finish/' + text._id;
 
 module.exports = {
   tags: ['TextPage'],
@@ -63,10 +63,11 @@ module.exports = {
 
   },
 
-  'Assert navigate to finish page' (client) {
-    client.keys(text.body.split(''));
-    client.assert.urlEquals(finishUrl);
-  },
+  // todo [AdGo] - test after implementing key support
+  // 'Assert navigate to finish page' (client) {
+  //   client.keys(text.body.split(''));
+  //   client.assert.urlEquals(finishUrl);
+  // },
 
   after (client) {
     client.end();
