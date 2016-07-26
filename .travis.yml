@@ -1,11 +1,11 @@
 sudo: false
 language: node_js
 node_js:
-  - '5'
+  - 'node'
 
 env:
-  - CXX=g++-4.8
   global:
+    - CXX=g++-4.8
     - TRAVIS_NODE_VERSION="6"
     - REPO_SLUG=goldylucks/typing
     # SAUCE_USERNAME (required by sauce-connect and nightwatch)
