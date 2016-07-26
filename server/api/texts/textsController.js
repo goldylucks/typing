@@ -20,7 +20,6 @@ function get (req, res, next) {
 }
 
 function getOne (req, res, next) {
-  SHOUT(req.headers, req.headers.authorization);
   const userId = req.user && req.user._id;
   const { id } = req.params;
   Texts.findById(id)
