@@ -47,7 +47,7 @@ cache:
 
 script:
   - if [ "$SCRIPT" ]; then npm run $SCRIPT; fi
-  - if [ "$E2E" ] && [ "$SAUCE_ACCESS_KEY" ]; then npm i && npm start & server:prod & sleep 10 && npm run e2e:ci; fi
+  - if [ "$E2E" ] && [ "$SAUCE_ACCESS_KEY" ]; then npm install && npm start & npm run server:prod & sleep 10 && npm run e2e:ci; fi
 
 # deploy:
 #   provider: heroku
