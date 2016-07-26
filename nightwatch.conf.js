@@ -5,7 +5,10 @@ module.exports = {
   'custom_assertions_path': '',
   'page_objects_path': '',
   'globals_path': '',
-
+  'globals': {
+    'waitForConditionTimeout': 20000,
+    'retryAssertionTimeout': 20000
+  },
   'selenium': {
     'start_process': true,
     'server_path': 'node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.53.1.jar',
@@ -29,7 +32,7 @@ module.exports = {
 
     'chrome': {
       'globals': {
-        'retryAssertionTimeout': 3000
+        'retryAssertionTimeout': 20000
       },
       'desiredCapabilities': {
         'browserName': 'chrome',
@@ -78,7 +81,7 @@ function saucelab (platform, browserName, browserVersion) {
     'silent': true,
     'output': true,
     'globals': {
-      'waitForConditionTimeout': 10000,
+      'waitForConditionTimeout': 20000,
       'retryAssertionTimeout': 3000
     },
     'screenshots': {

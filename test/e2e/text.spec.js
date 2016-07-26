@@ -27,8 +27,8 @@ module.exports = {
   },
 
   'Assert blinking cursor' (client) {
-    client.expect.element('#cursor').to.have.attribute('class').equals('cursor').before(5000);
-    client.expect.element('#cursor').to.have.attribute('class').equals('cursor active').before(5000);
+    client.expect.element('#cursor').to.have.attribute('class').equals('cursor').before(20000);
+    client.expect.element('#cursor').to.have.attribute('class').equals('cursor active').before(20000);
   },
 
   // onice, see https://github.com/seleniumhq/selenium/issues/386
@@ -39,7 +39,7 @@ module.exports = {
     client.expect.element('#l-0').to.have.attribute('class').equals('letter');
     // test correct letter
     client.keys(['C']);
-    client.expect.element('#l-0').to.have.attribute('class').contains('letter dirty').before(5000);
+    client.expect.element('#l-0').to.have.attribute('class').contains('letter dirty').before(20000);
     // client.expect.element('#l-0').to.have.attribute('class').which.contains('correct');
     // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('wrong');
     // client.expect.element('#wpm').text.to.be.above(1); // todo [adgo] - implement
@@ -47,7 +47,7 @@ module.exports = {
     // client.expect.element('#accuracy').text.to.equal('100');
     // test wrong letter
     client.keys(['H']);
-    client.expect.element('#l-1').to.have.attribute('class').contains('letter dirty wrong was-wrong').before(5000);
+    client.expect.element('#l-1').to.have.attribute('class').contains('letter dirty wrong was-wrong').before(20000);
     client.expect.element('#l-1').to.have.attribute('class').not.contains('correct');
     // client.expect.element('#wpm').text.to.be.below(runningWpm);
     // client.expect.element('#accuracy').text.to.equal('50');
