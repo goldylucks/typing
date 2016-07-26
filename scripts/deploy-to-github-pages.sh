@@ -18,12 +18,13 @@ if [[ ("$TRAVIS_PULL_REQUEST" != "false") || ("$TRAVIS_BRANCH" != "$SOURCE_BRANC
     exit 0
 fi
 
-# config
+# build
+npm run build
+cd $BUILD_PATH
+
+# config git
 git config --global user.email "$GIT_USER_EMAIL"
 git config --global user.name "$GIT_USER_NAME"
-
-# deploy
-cd $BUILD_PATH
 git init
 git add .
 git commit -m "$COMMIT_MSG"
