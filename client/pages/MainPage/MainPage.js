@@ -12,7 +12,7 @@ export default class MainPage {
 
   init () {
     this.render();
-    this.renderAuth();
+    // this.renderAuth();
     $(document).on('click', '#submit', this.onAdd);
     $(document).on('click', '#public', this.onPublicToggle);
   }
