@@ -33,11 +33,7 @@ module.exports = {
   },
 
   'Assert typingclub link' (client) {
-    client.click('[href="//typingclub.com"]');
-    client.window_handles(result => {
-      client.switchWindow(result.value[1]);
-      client.assert.urlContains('typingclub.com');
-    });
+    client.waitForElementVisible('[href="//typingclub.com"]', 10000);
   },
 
   after (client) {

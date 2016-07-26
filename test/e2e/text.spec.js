@@ -42,29 +42,10 @@ module.exports = {
     client.expect.element('#l-0').to.have.attribute('class').contains('letter dirty').before(20000);
     // client.expect.element('#l-0').to.have.attribute('class').which.contains('correct');
     // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('wrong');
-    // client.expect.element('#wpm').text.to.be.above(1); // todo [adgo] - implement
-    // set runningWpm;
-    // client.expect.element('#accuracy').text.to.equal('100');
     // test wrong letter
     client.keys(['H']);
     client.expect.element('#l-1').to.have.attribute('class').contains('letter dirty wrong was-wrong').before(20000);
     client.expect.element('#l-1').to.have.attribute('class').not.contains('correct');
-    // client.expect.element('#wpm').text.to.be.below(runningWpm);
-    // client.expect.element('#accuracy').text.to.equal('50');
-    // test backspace wrong letter
-    // client.keys([client.Keys.BACKSPACE]);
-    // client.expect.element('#l-1').to.have.attribute('class').contains('letter');
-    // client.expect.element('#l-1').to.have.attribute('class').contains('dirty');
-    // client.expect.element('#l-1').to.have.attribute('class').which.not.contains('correct');
-    // client.expect.element('#l-1').to.have.attribute('class').which.not.contains('wrong');
-    // client.expect.element('#l-1').to.have.attribute('class').contains('was-wrong');
-    // test backspace correct letter
-    // client.keys([client.Keys.BACKSPACE]);
-    // client.expect.element('#l-0').to.have.attribute('class').contains('letter');
-    // client.expect.element('#l-0').to.have.attribute('class').contains('dirty');
-    // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('correct');
-    // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('wrong');
-    // client.expect.element('#l-0').to.have.attribute('class').which.not.contains('was-wrong');
   },
 
   'Assert stats' (client) {

@@ -9,6 +9,7 @@ module.exports = {
   },
 
   'Assert add link' (client) {
+    client.waitForElementVisible('[href="/add-text"]', 20000);
     client.click('[href="/add-text"]');
     client.assert.urlEquals(addUrl);
     client.url(url).waitForElementVisible('body', 20000);
