@@ -2,6 +2,7 @@ const url = 'http://localhost:3000/nav';
 const addUrl = 'http://localhost:3000/add-text';
 
 module.exports = {
+  tags: ['NavPage'],
 
   before (client) {
     client.url(url).waitForElementVisible('body', 1000);

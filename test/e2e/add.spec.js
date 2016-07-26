@@ -8,7 +8,7 @@ const text = {
 };
 
 module.exports = {
-  tags: ['Main Page'],
+  tags: ['AddPage'],
 
   before (client) {
     client.url(url).waitForElementVisible('body', 1000);

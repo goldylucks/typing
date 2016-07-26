@@ -9,7 +9,7 @@ const text = {
 };
 
 module.exports = {
-  tags: ['Main Page'],
+  tags: ['MainPage'],
 
   before (client) {
     client.url(url).waitForElementVisible('body', 1000);
