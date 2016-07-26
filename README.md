@@ -1,24 +1,26 @@
 # Typing
 [![Build Status][travis-image]][travis-url] [![GPLv3][license-image]][license-url]
-[![Live App][app-image]][app-url]
+[![Live App][app-image]][app-url] [![dependencies][dependencies-image]][dependencies-url] [![devDependencies][dev-dependencies-image]][dev-dependencies-url]
 
-### Use
-The app is hosted on [github pages][app-url]
+## Use
+Typing is proudly hosted on [github pages][app-url]
 
-### Contact
+## Contact
 Issues and feature requests are [welcomed][issues-url] :)  
 You can also contact [:envelope: contact me here][contact-url]
 
-### Develop
+## Develop
 ```bash
 $ git clone git@github.com:goldylucks/typing.git
 $ cd typing
 $ npm install
 $ npm run server #starts node server, seeds database
 $ npm start # starts webpack dev server at port 3000
+$ npm run test:server -- -w # optional for running server unit testing in watch mode (recommended)
 ```
+open your favorite browser and [hack away][dev-url]!
 
-### Test
+## Test
 ```bash
 $ npm t # runs server unit tests
 $ npm run server
@@ -34,3 +36,8 @@ $ npm run e2e # Runs nightwatch against a selenium chrome driver
 [app-image]: https://img.shields.io/website-up-down-green-red/http/goldylucks.github.io/typing.svg
 [contact-url]: http://goldylucks.github.io/typing/contact
 [issues-url]: https://github.com/goldylucks/typing/issues
+[dependencies-image]: https://img.shields.io/david/goldylucks/typing.svg
+[dependencies-url]: https://david-dm.org/goldylucks/typing
+[dev-dependencies-image]: https://img.shields.io/david/dev/goldylucks/typing.svg
+[dev-dependencies-url]: https://david-dm.org/goldylucks/typing#info=devDependencies
+[dev-url]: http://localhost:3000
