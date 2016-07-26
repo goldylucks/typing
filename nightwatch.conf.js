@@ -101,6 +101,7 @@ function saucelab (platform, browserName, browserVersion) {
       'webStorageEnabled': true,
       'acceptSslCerts': true,
       'rotatable': true,
+      'ignoreProtectedModeSettings': true,
       'nativeEvents': true
     },
     'selenium': {
