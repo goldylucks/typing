@@ -6,6 +6,7 @@ module.exports = {
 
   before (client) {
     client.url(url).waitForElementVisible('body', 20000);
+    client.waitForElementVisible('[href="/add-text"]', 20000);
   },
 
   'Assert url' (client) {
@@ -13,7 +14,6 @@ module.exports = {
   },
 
   'Assert add link' (client) {
-    client.waitForElementVisible('[href="/add-text"]', 20000);
     client.click('[href="/add-text"]');
     client.assert.urlEquals(addUrl);
     // go back

@@ -2,10 +2,6 @@ html {
   font-family: monospace;
 }
 
-.loading {
-  margin: 20px auto;
-}
-
 .header {
   height: 50px;
   margin-bottom: 20px;

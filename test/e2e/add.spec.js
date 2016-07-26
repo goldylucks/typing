@@ -12,7 +12,7 @@ module.exports = {
 
   before (client) {
     client.url(url).waitForElementVisible('body', 20000);
-    client.waitForElementVisible('#text-container', 20000);
+    client.waitForElementVisible('#title', 20000);
   },
 
   'Assert url' (client) {
@@ -23,6 +23,7 @@ module.exports = {
     client.setValue('#title', text.title);
     client.setValue('#body', text.body);
     client.click('#submit');
+    client.waitForElementVisible('#text-container', 20000);
     client.assert.urlContains(textUrl);
     client.expect.element('#text').text.to.equal(text.body);
     client.url(url).waitForElementVisible('body', 20000);

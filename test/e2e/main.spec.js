@@ -13,7 +13,7 @@ module.exports = {
 
   before (client) {
     client.url(url).waitForElementVisible('body', 20000);
-    client.waitForElementVisible('#text-container', 20000);
+    client.waitForElementVisible('#title', 20000);
   },
 
   'Assert url' (client) {
