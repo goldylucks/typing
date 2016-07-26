@@ -5,6 +5,8 @@ node_js:
 
 env:
   global:
+    - CXX=g++-4.8
+    - TRAVIS_NODE_VERSION="6"
     - REPO_SLUG=goldylucks/typing
     # SAUCE_USERNAME (required by sauce-connect and nightwatch)
     - secure: rgZYURTu83ybnLloQki8m/MUZokd5bDPLzcrQrNcIYRpWcl5nxq3wLhQha7UKUMXObW1AyjYFeS27w58wLdlDFRb51/pUc+GyFv0Nowohe6tFXR7PRDV7Kmly2ABkgKzfVVYqWjAxSojACCVjcdzYJMXUswiOeCJCHFS7lLZrncQYWBDX7Qt66z6fYo+wlyJQtgqGg1HFW9l0lqHCs2NbLSc/xKSoss2ZTZas9T4Rk89923f7gWw9+CaXCk4wvRnt88KeNuwfq8bHeuCPg+q98TVTUG2/UB/LwyY8i68HJaXSPGsQK18voqYj/yhHeTVB5o2+787h5GJv8SxkmeoA4oaWc4flRuHqB8r3+XrKvn7l03VLNpRhs2GWVS3z6nM11Huq31ag0ZYTR/yWnpOnM3WNXdsnB8CYVL/ZWD0hu+nz2ENWskBbkIAhG6bBAgGUdLfkYuYNzwno08aLBoMyRlwJltbmS2rKlLGazWT0G35j1lh/6PaO3JeTjNV6n99VjH7EfvhmrUNzX+7Fca8LhcRfY1WM002i7U8Oi4n2oEtai1+kwIa3uoWoHoEif51b2rWOyaWiQURzDdY6ECHi4b3RMnIZJUexFc2zEt+tAolr/jF19zDRCZCDAn7cyvIBKjfVRymROkiQ919ZUmKMcZXDoPhvG5PT1YUSByva+c=
