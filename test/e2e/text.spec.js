@@ -37,7 +37,7 @@ module.exports = {
   // to allow testing
   'Assert keys class' (client) {
     client.expect.element('#l-0').to.have.attribute('class').equals('letter');
-    // test correct letter
+    // test correct letter s
     // client.keys(['C']);
     // client.expect.element('#l-0').to.have.attribute('class').contains('letter dirty').before(20000);
     // client.expect.element('#l-0').to.have.attribute('class').which.contains('correct');
