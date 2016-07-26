@@ -13,7 +13,7 @@
     "server:ci": "NODE_ENV=ci node server/server.js",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack --progress --colors",
-    "e2e:ci": "nightwatch -e saucelabs-ie-11,saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac,saucelabs-firefox-win,saucelabs-firefox-linux,saucelabs-firefox-mac,saucelabs-safari-mac",
+    "e2e:ci": "nightwatch -e saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac,saucelabs-firefox-win,saucelabs-firefox-linux,saucelabs-firefox-mac,saucelabs-safari-mac",
     "e2e": "nightwatch -e chrome",
     "clean": "rm build -rf"
   },

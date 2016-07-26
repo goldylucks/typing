@@ -64,7 +64,7 @@ module.exports = {
   },
 
   'Assert navigate to finish page' (client) {
-    client.keys(text.body.slice(0));
+    client.keys(text.body.split(''));
     client.assert.urlEquals(finishUrl);
   },
 
