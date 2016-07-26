@@ -3,6 +3,12 @@ language: node_js
 node_js:
   - 'node'
 
+compiler:
+  - gcc
+  - clang
+install:
+- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+
 services: mongodb
 
 env:
@@ -15,6 +21,7 @@ addons:
     packages:
       - g++-4.8
       - gcc-4.8
+      - clang
 
 env:
   global:
