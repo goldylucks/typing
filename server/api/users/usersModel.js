@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 require('mongoose-type-email');
-const bcrypt = require('bcrypt-as-promised');
+const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const UsersSchema = getSchema();
@@ -29,10 +29,12 @@ function getSchema () {
 }
 
 function preSave (next) {
-  bcrypt.hash(this.password, 10)
-    .then(hash => {
-      this.password = hash;
-      next();
-    })
-    .catch(next);
+  bcrypt.hash(this.password, 10, (err, hash) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    this.password = hash;
+    next();
+  });
 }

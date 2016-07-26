@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const CustomError = require('custom-error-generator');
 
 const service = require('./usersService');
