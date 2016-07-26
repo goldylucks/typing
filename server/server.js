@@ -1,4 +1,3 @@
-require('dotenv').config(); // dev/tests
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const express = require('express');
