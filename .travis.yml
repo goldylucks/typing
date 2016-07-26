@@ -3,16 +3,19 @@ language: node_js
 node_js:
   - 'node'
 
+env:
+  - CXX=g++-4.8
+
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+      - gcc-4.8
 
 env:
   global:
-    - CXX=g++-4.8
     - TRAVIS_NODE_VERSION="6"
     - REPO_SLUG=goldylucks/typing
     # SAUCE_USERNAME (required by sauce-connect and nightwatch)
