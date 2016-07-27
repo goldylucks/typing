@@ -7,6 +7,8 @@ GIT_USER_EMAIL="admin@travis-ci.org"
 GIT_USER_NAME="Travis CI"
 BUILD_PATH="build"
 TEST_REPO_SLUG="goldylucks/typing-test"
+# IS_RELEASE =
+# TARGET_BRANCH =
 SHA=$(git rev-parse --verify HEAD) # reference to commit deployed to TARGET_BRANCH
 COMMIT_MSG="Deploy to Github Pages: ${SHA}"
 
@@ -19,7 +21,12 @@ if [[ ("$TRAVIS_PULL_REQUEST" != "false") || ("$TRAVIS_BRANCH" != "$SOURCE_BRANC
 fi
 
 # build
-npm run build
+if [ -z "$TRAVIS_TAG"]; then
+  npm run build:client:test
+else
+  npm run build:client:prod
+fi
+
 cd $BUILD_PATH
 
 # config git

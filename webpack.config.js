@@ -4,6 +4,7 @@ const path = require('path');
 
 const ENV = process.env.NODE_ENV || 'development';
 const isProd = ENV === 'production';
+const isTestBuild = ENV === 'testing';
 
 module.exports = {
   debug: !isProd,
@@ -47,18 +48,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: path.join(__dirname, './server'),
-        include: path.join(__dirname, './client'),
+        include: /node_modules/,
         loader: 'style!css'
-      },
-      {
-        test: /\.less$/,
-        exclude: path.join(__dirname, './server'),
-        loaders: [
-          'style',
-          'css',
-          'less'
-        ]
       },
       {
         test: /\.(png|jpg|)$/,
@@ -91,7 +82,9 @@ module.exports = {
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(ENV),
-          IS_PROD: JSON.stringify(isProd)
+          IS_PROD: JSON.stringify(isProd),
+          SERVER_URL: JSON.stringify(getServerUrl())
+          // LOGGING: JSON.stringify(isLogging)
         }
       })
     ];
@@ -118,3 +111,14 @@ module.exports = {
   }
 };
 
+function getServerUrl () {
+  if (isProd) {
+    return 'http://gold-typing.herokuapp.com';
+  }
+
+  if (isTestBuild) {
+    return 'http://gold-typing-test.herokuapp.com';
+  }
+
+  return 'http://localhost:3001';
+}
