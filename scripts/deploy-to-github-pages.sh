@@ -9,6 +9,7 @@ BUILD_PATH="build"
 TEST_REPO_SLUG="goldylucks/typing-test"
 # IS_RELEASE =
 # TARGET_BRANCH =
+# TARGET_REPO_SLUG =
 SHA=$(git rev-parse --verify HEAD) # reference to commit deployed to TARGET_BRANCH
 COMMIT_MSG="Deploy to Github Pages: ${SHA}"
 
