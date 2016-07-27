@@ -1,10 +1,10 @@
 
-.text-height-container {
+.textHeightContainer {
   overflow: hidden;
   height: 230px;
 }
 
-.text-container {
+.textContainer {
   position: relative;
   width: 900px;
   line-height: 4em;
@@ -25,12 +25,12 @@
   background: pink;
 }
 
-.letter.correct:not(.was-wrong) {
+.letter.correct:not(.wasWrong) {
   color: #008000;
   background-color: #e7fbd3;
 }
 
-.letter.correct.was-wrong {
+.letter.correct.wasWrong {
   color: green;
   background-color: #FFE9B2;
 }

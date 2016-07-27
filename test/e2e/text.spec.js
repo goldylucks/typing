@@ -20,15 +20,15 @@ module.exports = {
 
   'Assert ui' (client) {
     client.expect.element('#text-container').text.to.contain(text.body);
-    client.expect.element('.wpm').text.to.contain('wpm:');
+    client.expect.element('[data-test="wpm"]').text.to.contain('wpm:');
     client.expect.element('#wpm').text.to.equal('0');
-    client.expect.element('.accuracy').text.to.contain('accuracy: 0%');
+    client.expect.element('[data-test="accuracy"]').text.to.contain('accuracy: 0%');
     client.expect.element('#accuracy').text.to.equal('0');
   },
 
   'Assert blinking cursor' (client) {
-    client.expect.element('#cursor').to.have.attribute('class').equals('cursor').before(20000);
-    client.expect.element('#cursor').to.have.attribute('class').equals('cursor active').before(20000);
+    client.expect.element('#cursor').to.have.attribute('class').contains('cursor').before(20000);
+    client.expect.element('#cursor').to.have.attribute('class').match(/^(?=.*cursor)(?=.*active)/).before(20000);
   },
 
   // onice, see https://github.com/seleniumhq/selenium/issues/386
@@ -36,7 +36,7 @@ module.exports = {
   // if selenium won't fix that, switch back to keycodes in text component
   // to allow testing
   'Assert keys class' (client) {
-    client.expect.element('#l-0').to.have.attribute('class').equals('letter');
+    client.expect.element('#l-0').to.have.attribute('class').contains('letter');
     // test correct letter s
     // client.keys(['C']);
     // client.expect.element('#l-0').to.have.attribute('class').contains('letter dirty').before(20000);

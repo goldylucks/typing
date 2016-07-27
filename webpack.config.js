@@ -47,18 +47,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: path.join(__dirname, './server'),
-        include: path.join(__dirname, './client'),
+        include: /node_modules/,
         loader: 'style!css'
-      },
-      {
-        test: /\.less$/,
-        exclude: path.join(__dirname, './server'),
-        loaders: [
-          'style',
-          'css',
-          'less'
-        ]
       },
       {
         test: /\.(png|jpg|)$/,

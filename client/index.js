@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import './index.html';
+import './index.css';
 import { onEmit } from './utils/utils';
 import NavPage from './pages/NavPage';
 import TextPage from './pages/TextPage';
