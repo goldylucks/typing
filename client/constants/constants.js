@@ -1,1 +1,2 @@
-export const API_URL = process.env.IS_PROD ? 'http://gold-typing.herokuapp.com/api' : 'http://localhost:3001/api';
+export const SERVER_URL = process.env.SERVER_URL;
+export const API_URL = SERVER_URL + '/api';

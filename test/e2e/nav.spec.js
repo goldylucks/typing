@@ -21,6 +21,7 @@ module.exports = {
   },
 
   'Assert links' (client) {
+    client.waitForElementVisible('[href^="./texts/"]', 20000);
     client.elements('css selector', '[href^="./texts/"]', res => {
       const links = res.value;
       client.expect(links).to.have.length.above(1);
