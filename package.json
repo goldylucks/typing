@@ -11,7 +11,8 @@
     "server": "nodemon server/server.js --ignore client/",
     "server:prod": "NODE_ENV=production node server/server.js",
     "server:ci": "NODE_ENV=ci node server/server.js",
-    "prebuild": "npm run clean",
+    "prebuild:client:prod": "npm run clean",
+    "prebuild:client:test": "npm run clean",
     "build:client:prod": "NODE_ENV=production webpack --progress --colors",
     "build:client:test": "NODE_ENV=testing webpack --progress --colors",
     "e2e:ci": "nightwatch -e saucelabs-edge,saucelabs-chrome-win,saucelabs-chrome-linux,saucelabs-chrome-mac,saucelabs-firefox-win,saucelabs-firefox-linux,saucelabs-firefox-mac,saucelabs-safari-mac",
@@ -42,6 +43,7 @@
     "chai": "^3.5.0",
     "chai-spies": "^0.7.1",
     "chromedriver": "^2.21.2",
+    "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "deasync": "^0.1.7",
     "dotenv": "^2.0.0",
@@ -73,6 +75,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
+    "webpack-error-notification": "^0.1.6",
     "webpack-hot-middleware": "^2.7.1"
   },
   "dependencies": {

@@ -2,7 +2,11 @@ const rucksack = require('rucksack-css');
 const webpack = require('webpack');
 const path = require('path');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackErrorNotificationPlugin = require('webpack-error-notification');
+
 const ENV = process.env.NODE_ENV || 'development';
+const isDev = ENV === 'development';
 const isProd = ENV === 'production';
 const isTestBuild = ENV === 'testing';
 
@@ -79,17 +83,24 @@ module.exports = {
   ],
   plugins: (function () {
     const plugins = [
+      new WebpackErrorNotificationPlugin(),
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(ENV),
           IS_PROD: JSON.stringify(isProd),
+          IS_DEV: JSON.stringify(isDev),
           SERVER_URL: JSON.stringify(getServerUrl())
           // LOGGING: JSON.stringify(isLogging)
         }
       })
     ];
 
+    if (isTestBuild) {
+      plugins.push(new CopyWebpackPlugin([{ from: 'index.test.html', to: 'index.html' }]));
+    }
+
     if (isProd) {
+      plugins.push(new CopyWebpackPlugin([{ from: 'index.prod.html', to: 'index.html' }]));
       plugins.push(new webpack.optimize.OccurrenceOrderPlugin(false));
       plugins.push(new webpack.optimize.DedupePlugin());
       plugins.push(new webpack.optimize.UglifyJsPlugin({
@@ -122,3 +133,4 @@ function getServerUrl () {
 
   return 'http://localhost:3001';
 }
+
