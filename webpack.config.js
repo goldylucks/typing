@@ -124,11 +124,11 @@ module.exports = {
 
 function getServerUrl () {
   if (isProd) {
-    return 'http://gold-typing.herokuapp.com';
+    return 'https://gold-typing.herokuapp.com';
   }
 
   if (isTestBuild) {
-    return 'http://gold-typing-test.herokuapp.com';
+    return 'https://gold-typing-test.herokuapp.com';
   }
 
   return 'http://localhost:3001';
