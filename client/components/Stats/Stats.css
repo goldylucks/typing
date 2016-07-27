@@ -1,4 +1,4 @@
-.stats-container {
+.container {
   width: 910px;
   margin: 20px auto 0;
   padding-top: 20px;
@@ -21,4 +21,12 @@
 
 .accuracy {
   display: inline-block;
+}
+
+.letter {
+  position: relative;
+  font-size: 35px;
+  color: #999;
+  border-radius: 4px;
+  outline: 1px solid white;
 }

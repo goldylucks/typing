@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { some } from 'lodash';
+import styles from './Text.css';
 
 export default class Text {
 
@@ -11,10 +12,10 @@ export default class Text {
 
   render () {
     return `
-      <div class='text-height-container'>
-        <div id='text-container' class='text-container'>
+      <div class=${styles.textHeightContainer}>
+        <div id='text-container' class=${styles.textContainer}>
           <div id='text'></div>
-          <div id='cursor' class='cursor'></div>
+          <div id='cursor' class=${styles.cursor}></div>
         </div>
       </div>
     `;
@@ -28,7 +29,7 @@ export default class Text {
   }
 
   renderLetters () {
-    const $letters = this.letters.map((l, idx) => $(`<span id=l-${idx} class='letter'>${l}</span>`));
+    const $letters = this.letters.map((l, idx) => $(`<span id=l-${idx} class=${styles.letter}>${l}</span>`));
     $('#text').append($letters);
   }
 
@@ -39,7 +40,7 @@ export default class Text {
     }
 
     const $activeLetter = this.l(letterIdx);
-    $activeLetter.removeClass('active').addClass('dirty');
+    $activeLetter.removeClass(styles.active).addClass(styles.dirty);
     const $nextLetter = key === 'Backspace' ? this.l(letterIdx - 1) : this.l(letterIdx + 1);
 
     if (key === 'Backspace') {
@@ -47,14 +48,14 @@ export default class Text {
         return;
       }
       const scoreChange = this.lWasCorrect($nextLetter) ? -1 : 0;
-      $nextLetter.removeClass('wrong correct');
+      $nextLetter.removeClass(`${styles.wrong} ${styles.correct}`);
       this.adjustCursorPosition($nextLetter);
       this.adjustTextContainerHeight($activeLetter, $nextLetter);
       return { idxChange: -1, scoreChange };
     }
 
     const keyIsCorrect = key === this.letters[letterIdx];
-    const klass = keyIsCorrect ? 'correct' : 'wrong was-wrong';
+    const klass = keyIsCorrect ? styles.correct : `${styles.wrong} ${styles.wasWrong}`;
     const scoreChange = keyIsCorrect ? 1 : 0;
     $activeLetter.addClass(klass);
     const isFinished = this.endOfText(letterIdx + 1);
@@ -80,7 +81,7 @@ export default class Text {
   }
 
   cursorInterval = () => {
-    this.$cursor.toggleClass('active');
+    this.$cursor.toggleClass(styles.active);
   }
 
   adjustCursorPosition ($nextLetter) {

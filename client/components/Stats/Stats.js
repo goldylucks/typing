@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import styles from './Stats.css';
 
 export default class Stats {
 
@@ -6,15 +7,15 @@ export default class Stats {
 
   render () {
     return `
-      <div class='stats-container'>
-        <div class="stats">
-          <div class='wpm'>
+      <div class=${styles.container}>
+        <div class=${styles.stats}>
+          <div class=${styles.wpm} data-test=wpm>
             wpm:
-            <span id='wpm' class='letter'>0</span>
+            <span id='wpm' class=${styles.letter}>0</span>
           </div>
-          <div class='accuracy'>
+          <div class=${styles.accuracy} data-test=accuracy>
             accuracy:
-            <span class='letter'>
+            <span class=${styles.letter}>
               <span id='accuracy'>0</span>%
             </span>
           </div>
