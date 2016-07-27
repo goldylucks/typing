@@ -24,6 +24,7 @@ module.exports = {
     client.setValue('#title', text.title);
     client.setValue('#body', text.body);
     client.click('#submit');
+    client.waitForElementVisible('#text', 20000);
     client.assert.urlContains(textUrl);
     client.expect.element('#text').text.to.equal(text.body);
     // go back
