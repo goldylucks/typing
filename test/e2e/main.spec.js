@@ -28,11 +28,11 @@ module.exports = {
     client.assert.urlContains(textUrl);
     client.expect.element('#text').text.to.equal(text.body);
     // go back
-    client.url(url).waitForElementVisible('[href="/nav"]', 20000);
+    client.url(url).waitForElementVisible('[href="nav"]', 20000);
   },
 
   'Assert nav link' (client) {
-    client.click('[href="/nav"]');
+    client.click('[href="nav"]');
     client.assert.urlEquals(navUrl);
     // go back
     client.url(url).waitForElementVisible('body', 20000);

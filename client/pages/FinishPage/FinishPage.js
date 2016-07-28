@@ -39,8 +39,8 @@ export default class FinishPage {
           </div>
         </div>
         <div class='actions'>
-          <a href=/nav>menu</a>
-          <a href=/texts/${id}>redo</a>
+          <a href=nav>menu</a>
+          <a href=texts/${id}>redo</a>
         </div>
       </div>
     `;
