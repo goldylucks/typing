@@ -1,6 +1,6 @@
 # Typing
 [![Build Status][travis-image]][travis-url] [![GPLv3][license-image]][license-url]
-[![Live App][app-image]][app-url] [![dependencies][dependencies-image]][dependencies-url] [![devDependencies][dev-dependencies-image]][dev-dependencies-url]
+[![Live App][app-image]][app-url] [![Test App][test-app-image]][test-app-url] [![dependencies][dependencies-image]][dependencies-url] [![devDependencies][dev-dependencies-image]][dev-dependencies-url]
 
 ## Use
 Typing is proudly hosted on [github pages][app-url]
@@ -33,7 +33,9 @@ $ npm run e2e # Runs nightwatch against a selenium chrome driver
 [license-image]: https://img.shields.io/badge/license-GPL%20v3-green.svg
 [license-url]: http://www.gnu.org/licenses/gpl-3.0.en.html
 [app-url]: http://goldylucks.github.io/typing
-[app-image]: https://img.shields.io/website-up-down-green-red/http/goldylucks.github.io/typing.svg
+[app-image]: https://img.shields.io/website-up-down-green-red/http/goldylucks.github.io/typing.svg?label=live%20app
+[test-app-url]: http://goldylucks.github.io/typing-test
+[test-app-image]: https://img.shields.io/website-up-down-green-red/http/goldylucks.github.io/typing-test.svg?label=test%20app
 [contact-url]: http://goldylucks.github.io/typing/contact
 [issues-url]: https://github.com/goldylucks/typing/issues
 [dependencies-image]: https://img.shields.io/david/goldylucks/typing.svg
