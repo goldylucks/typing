@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const TextsSchema = getSchema();
 
+TextsSchema.pre('save', preSave);
+
 module.exports = mongoose.model('texts', TextsSchema);
 
 function getSchema () {
@@ -27,4 +29,13 @@ function getSchema () {
     userId: Schema.Types.ObjectId
 
   });
+}
+
+function preSave (next) {
+  this.body = parseBody(this.body);
+  next();
+}
+
+function parseBody (body) {
+  return body.replace(/[”“]/g, '"').replace(/[’`]/g, '\'');
 }
