@@ -43,10 +43,20 @@ script:
   - if [ "$SCRIPT" ]; then npm run $SCRIPT; fi
   - if [ "$E2E" ] && [ "$SAUCE_ACCESS_KEY" ]; then npm start & npm run server:ci & sleep 30 && npm run e2e:ci; fi
 
-# deploy:
-#   provider: heroku
-#   api_key:
-#     secure: wNJJocSbMBYdAZ/RAkdsSxRgoXtgpuSFy8XZIbYOkbCeg1L9h3b4uLHKF0OSq3wPyjgkVKL0/ASAXxcFkE4rDpM1kJhxPTSbywLqm4k/KgbON1DAZwdAJDzHR1LOfzJyRcSWxE/eafcFgmvpHyzTjXeWlm/ibpy7jsXuTlqDhPxN3A0iQAMTBvMCTJUeEPf5ybpsjirpbfUDXMS3TtyGs1T83hraOESW+8Ogxg//+CdT1ILoYrqv4E5ywKegHE5iLg+UbIZiJzoexYspZVOqJbtuA8Xdpse9R4qgL1GdEP9H+92FfqHhANqIeYWn1hzIJLZ77RekVClCbsR5aSDr+RL0nu3OUEuORrXmGYrb7vmqGGPCGdJ0rxgCJW/+sk/TVzsG/7tGoWgMWrt6bWeuV1cIw2Pv0b0pTw5jxomGn/nupkdWj0AOVsmWGYo4YyE/ilO/reRszZEY375XmNrV30KVN2iP2rdK0JmylZMevLhk0CerJwiGMygdBqgEaB6qdQZ12pWT45qdmd2xiVSlVCrAFAXBkdqGu3SpHdGsRv4mXSeXrKyV6BrK/nd83czXE+zXTwRBD/vv9WWTP2v6OMUY0FSRiKVcOAB1xMCejWRHNCy8ljuTEPGFNbuTnXUG4vwAZ1+gkORJVM4v3TIeBkM7C2kx6lCMzEoow86KyTY=
+deploy:
+  provider: heroku
+  app: gold-typing-test
+  api_key:
+    secure: wNJJocSbMBYdAZ/RAkdsSxRgoXtgpuSFy8XZIbYOkbCeg1L9h3b4uLHKF0OSq3wPyjgkVKL0/ASAXxcFkE4rDpM1kJhxPTSbywLqm4k/KgbON1DAZwdAJDzHR1LOfzJyRcSWxE/eafcFgmvpHyzTjXeWlm/ibpy7jsXuTlqDhPxN3A0iQAMTBvMCTJUeEPf5ybpsjirpbfUDXMS3TtyGs1T83hraOESW+8Ogxg//+CdT1ILoYrqv4E5ywKegHE5iLg+UbIZiJzoexYspZVOqJbtuA8Xdpse9R4qgL1GdEP9H+92FfqHhANqIeYWn1hzIJLZ77RekVClCbsR5aSDr+RL0nu3OUEuORrXmGYrb7vmqGGPCGdJ0rxgCJW/+sk/TVzsG/7tGoWgMWrt6bWeuV1cIw2Pv0b0pTw5jxomGn/nupkdWj0AOVsmWGYo4YyE/ilO/reRszZEY375XmNrV30KVN2iP2rdK0JmylZMevLhk0CerJwiGMygdBqgEaB6qdQZ12pWT45qdmd2xiVSlVCrAFAXBkdqGu3SpHdGsRv4mXSeXrKyV6BrK/nd83czXE+zXTwRBD/vv9WWTP2v6OMUY0FSRiKVcOAB1xMCejWRHNCy8ljuTEPGFNbuTnXUG4vwAZ1+gkORJVM4v3TIeBkM7C2kx6lCMzEoow86KyTY=
+
+deploy:
+  provider: heroku
+  app: gold-typing
+  on: 
+    tags: true
+    all_branches: true # needed due to travis limitation, we deploy only on master
+  api_key:
+    secure: wNJJocSbMBYdAZ/RAkdsSxRgoXtgpuSFy8XZIbYOkbCeg1L9h3b4uLHKF0OSq3wPyjgkVKL0/ASAXxcFkE4rDpM1kJhxPTSbywLqm4k/KgbON1DAZwdAJDzHR1LOfzJyRcSWxE/eafcFgmvpHyzTjXeWlm/ibpy7jsXuTlqDhPxN3A0iQAMTBvMCTJUeEPf5ybpsjirpbfUDXMS3TtyGs1T83hraOESW+8Ogxg//+CdT1ILoYrqv4E5ywKegHE5iLg+UbIZiJzoexYspZVOqJbtuA8Xdpse9R4qgL1GdEP9H+92FfqHhANqIeYWn1hzIJLZ77RekVClCbsR5aSDr+RL0nu3OUEuORrXmGYrb7vmqGGPCGdJ0rxgCJW/+sk/TVzsG/7tGoWgMWrt6bWeuV1cIw2Pv0b0pTw5jxomGn/nupkdWj0AOVsmWGYo4YyE/ilO/reRszZEY375XmNrV30KVN2iP2rdK0JmylZMevLhk0CerJwiGMygdBqgEaB6qdQZ12pWT45qdmd2xiVSlVCrAFAXBkdqGu3SpHdGsRv4mXSeXrKyV6BrK/nd83czXE+zXTwRBD/vv9WWTP2v6OMUY0FSRiKVcOAB1xMCejWRHNCy8ljuTEPGFNbuTnXUG4vwAZ1+gkORJVM4v3TIeBkM7C2kx6lCMzEoow86KyTY=
 
 after_success:
   - ./scripts/deploy-to-github-pages.sh
