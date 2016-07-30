@@ -4,7 +4,7 @@
 
 ## Use
 Typing is kindly hosted on Heroku  
-[Live App][app-url] (stable, latest release)
+[Live App][app-url] (stable, latest release)  
 [Test App][test-app-url] (latest master)
 
 ## Contact
