@@ -109,11 +109,7 @@ module.exports = {
     }
 
     return plugins;
-  }()),
-  devServer: {
-    contentBase: './client',
-    hot: !isProd
-  }
+  }())
 };
 
 function getServerUrl () {
@@ -125,6 +121,5 @@ function getServerUrl () {
     return 'https://gold-typing-test.herokuapp.com';
   }
 
-  return 'http://localhost:3001';
+  return 'http://localhost:3000';
 }
-

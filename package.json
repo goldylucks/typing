@@ -7,7 +7,7 @@
     "test:server": "NODE_ENV=testing mocha server/**/*.spec.js",
     "start": "npm run client",
     "lint": "eslint --ignore-path .gitignore .",
-    "client": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
+    "client": "webpack --progress --colors -w",
     "server": "nodemon server/server.js --ignore client/",
     "server:prod": "NODE_ENV=production node server/server.js",
     "server:ci": "NODE_ENV=ci node server/server.js",
