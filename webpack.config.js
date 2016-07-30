@@ -2,7 +2,6 @@ const rucksack = require('rucksack-css');
 const webpack = require('webpack');
 const path = require('path');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackErrorNotificationPlugin = require('webpack-error-notification');
 
 const ENV = process.env.NODE_ENV || 'development';
@@ -95,12 +94,7 @@ module.exports = {
       })
     ];
 
-    if (isTestBuild) {
-      plugins.push(new CopyWebpackPlugin([{ from: 'index.test.html', to: 'index.html' }]));
-    }
-
     if (isProd) {
-      plugins.push(new CopyWebpackPlugin([{ from: 'index.prod.html', to: 'index.html' }]));
       plugins.push(new webpack.optimize.OccurrenceOrderPlugin(false));
       plugins.push(new webpack.optimize.DedupePlugin());
       plugins.push(new webpack.optimize.UglifyJsPlugin({

@@ -1,9 +1,5 @@
 import $ from 'jquery';
 import './index.css';
-// on test and prod webpack is copying the base html file to build folder
-if (process.env.IS_DEV) {
-  require.resolve('./index.html');
-}
 import { onEmit } from './utils/utils';
 import NavPage from './pages/NavPage';
 import TextPage from './pages/TextPage';
