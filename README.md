@@ -4,8 +4,8 @@
 
 ## Use
 Typing is kindly hosted on Heroku  
-Live App (stable, latest release) - [app-url]  
-Test App (latest master) - [test-app-url]
+[Live App][app-url] (stable, latest release)
+[Test App][test-app-url] (latest master)
 
 ## Contact
 Issues, features (and Prs!) are always [welcomed][issues-url] :)  
@@ -45,3 +45,6 @@ $ npm run e2e # Runs nightwatch against a selenium chrome driver
 [dev-dependencies-image]: https://img.shields.io/david/dev/goldylucks/typing.svg
 [dev-dependencies-url]: https://david-dm.org/goldylucks/typing#info=devDependencies
 [dev-url]: http://localhost:3000
+
+## License
+The code is available under the [GPL v3 license][license-url].
