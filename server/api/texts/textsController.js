@@ -1,10 +1,10 @@
 const Texts = require('./textsModel');
 
 module.exports = {
-  get,
-  getOne,
-  post,
-  put
+  get: get,
+  getOne: getOne,
+  post: post,
+  put: put
 };
 
 function get (req, res, next) {
