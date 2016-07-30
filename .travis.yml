@@ -44,6 +44,7 @@ script:
   - if [ "$E2E" ] && [ "$SAUCE_ACCESS_KEY" ]; then npm run server:ci & npm run build:client && sleep 15 && npm run e2e:ci; fi
 
 before_deploy:
+  - npm run build:client
   - rm -rf client test
   - git add -f build
   - git commit -m "add build"
