@@ -21,7 +21,7 @@ function get (req, res, next) {
 
 function getOne (req, res, next) {
   const userId = req.user && req.user._id;
-  const { id } = req.params;
+  const id = req.params.id;
   Texts.findById(id)
     .then(text => {
       if (!text) {

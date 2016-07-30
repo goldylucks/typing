@@ -5,11 +5,11 @@ const service = require('./usersService');
 const User = require('./usersModel');
 
 module.exports = {
-  get,
-  getOne,
-  login,
-  post, // signup
-  put
+  get: get,
+  getOne: getOne,
+  login: login,
+  post: post, // signup
+  put: put
 };
 
 function get (req, res, next) {
@@ -19,14 +19,15 @@ function get (req, res, next) {
 }
 
 function getOne (req, res, next) {
-  const { id } = req.params;
+  const id = req.params.id;
   User.findById(id)
     .then(user => user ? res.json(user) : res.status(404).send("user doesn't exist"))
     .catch(next);
 }
 
 function login (req, res, next) {
-  const { email, password } = req.body;
+  const email = req.body.email;
+  const password = req.body.password;
   User.findOne({ email }).select('+password')
     .then(user => {
       if (!user || !bcrypt.compareSync(password, user.password)) {
