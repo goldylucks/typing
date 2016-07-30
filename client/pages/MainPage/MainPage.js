@@ -25,7 +25,7 @@ export default class MainPage {
     return `
       <div>
         <div>
-          <h1>Consume your procrascinated texts AND improve your typing at the same time!</h1>
+          <h1>Consume your procrastinated texts AND improve your typing at the same time!</h1>
         </div>
         <div>
           <h2>Put your text in the box below and start practicing</h2>
