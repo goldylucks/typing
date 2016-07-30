@@ -5,9 +5,7 @@ const path = require('path');
 const WebpackErrorNotificationPlugin = require('webpack-error-notification');
 
 const ENV = process.env.NODE_ENV || 'development';
-const isDev = ENV === 'development';
 const isProd = ENV === 'production';
-const isTestBuild = ENV === 'testing';
 
 module.exports = {
   debug: !isProd,
@@ -82,16 +80,7 @@ module.exports = {
   ],
   plugins: (function () {
     const plugins = [
-      new WebpackErrorNotificationPlugin(),
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(ENV),
-          IS_PROD: JSON.stringify(isProd),
-          IS_DEV: JSON.stringify(isDev),
-          SERVER_URL: JSON.stringify(getServerUrl())
-          // LOGGING: JSON.stringify(isLogging)
-        }
-      })
+      new WebpackErrorNotificationPlugin()
     ];
 
     if (isProd) {
@@ -111,15 +100,3 @@ module.exports = {
     return plugins;
   }())
 };
-
-function getServerUrl () {
-  if (isProd) {
-    return 'https://gold-typing.herokuapp.com';
-  }
-
-  if (isTestBuild) {
-    return 'https://gold-typing-test.herokuapp.com';
-  }
-
-  return 'http://localhost:3000';
-}
