@@ -1,10 +1,10 @@
 const Texts = require('./textsModel');
 
 module.exports = {
-  get,
-  getOne,
-  post,
-  put
+  get: get,
+  getOne: getOne,
+  post: post,
+  put: put
 };
 
 function get (req, res, next) {
@@ -21,7 +21,7 @@ function get (req, res, next) {
 
 function getOne (req, res, next) {
   const userId = req.user && req.user._id;
-  const { id } = req.params;
+  const id = req.params.id;
   Texts.findById(id)
     .then(text => {
       if (!text) {

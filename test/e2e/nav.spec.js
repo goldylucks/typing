@@ -1,5 +1,5 @@
-const url = 'http://localhost:3000/nav';
-const addUrl = 'http://localhost:3000/add-text';
+const url = 'http://localhost:3000/nav/';
+const addUrl = 'http://localhost:3000/add-text/';
 
 module.exports = {
   tags: ['NavPage'],

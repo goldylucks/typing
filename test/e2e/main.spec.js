@@ -2,7 +2,7 @@
 
 const url = 'http://localhost:3000/';
 const textUrl = 'http://localhost:3000/texts/';
-const navUrl = 'http://localhost:3000/nav';
+const navUrl = 'http://localhost:3000/nav/';
 const text = {
   title: 'Test text title',
   body: 'Test text body'

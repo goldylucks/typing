@@ -1,3 +1,4 @@
+const path = require('path');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const express = require('express');
@@ -16,9 +17,13 @@ if (config.seed) {
 require('./middlewares/appMiddleware')(app);
 
 app.use('/api', api);
-
+app.use('/api', require('./middlewares/404Middleware'));
+app.use('/', express.static(path.join(__dirname, '..', 'build')));
+app.use('/nav', express.static(path.join(__dirname, '..', 'build')));
+app.use('/texts/:id', express.static(path.join(__dirname, '..', 'build')));
+app.use('/add-text', express.static(path.join(__dirname, '..', 'build')));
+app.use('/finish/:id', express.static(path.join(__dirname, '..', 'build')));
 app.use(require('./middlewares/errorMiddleware'));
-app.use(require('./middlewares/404Middleware'));
 
 if (!module.parent) {
   app.listen(config.port);

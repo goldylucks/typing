@@ -5,11 +5,11 @@ const checkToken = expressJwt({ secret: config.secrets.jwt });
 const User = require('../users/usersModel');
 
 module.exports = {
-  signToken,
-  decodeToken,
-  isOwner,
-  isSystem,
-  getFreshUser
+  signToken: signToken,
+  decodeToken: decodeToken,
+  isOwner: isOwner,
+  isSystem: isSystem,
+  getFreshUser: getFreshUser
 };
 
 function signToken (_id) {
