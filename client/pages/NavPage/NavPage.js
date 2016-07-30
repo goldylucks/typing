@@ -24,7 +24,7 @@ export default class NavPage {
   renderNav (texts) {
     const textsHtml = texts.map(t => {
       return `<li><a href=texts/${t._id}>${t.title}</a></li>`;
-    });
+    }).join('');
     const html = `
       <ul>
         ${textsHtml}
