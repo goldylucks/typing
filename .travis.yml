@@ -46,6 +46,8 @@ script:
 before_deploy:
   - npm run build:client
   - rm -rf client test
+  - git config --global user.name "travis CI"
+  - git config --global user.email "admin@travis-ci.org"
   - git add -f build
   - git commit -m "add build"
 
