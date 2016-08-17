@@ -13,7 +13,7 @@ module.exports = {
   devtool: isProd ? '#source-map' : '#cheap-module-eval-source-map',
   context: path.join(__dirname, './client'),
   entry: {
-    index: './index.js'
+    index: ['bootstrap-loader', './index.js']
   },
   output: {
     path: path.join(__dirname, './build'),
@@ -26,6 +26,10 @@ module.exports = {
         include: path.join(__dirname, './client'),
         exclude: path.join(__dirname, './server'),
         loader: 'babel'
+      },
+      {
+        test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
+        loader: 'imports?jQuery=jquery'
       },
       {
         test: /\.json$/,
