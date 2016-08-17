@@ -16,7 +16,7 @@ You can also [:envelope: contact me here][contact-url]
 $ git clone git@github.com:goldylucks/typing.git
 $ cd typing
 $ npm install
-$ npm run server #starts node server, seeds database
+$ npm run server #starts node server, seeds database, serves files at port 3000
 $ npm start # starts webpack
 $ npm run test:server -- -w # optional for running server unit testing in watch mode (recommended)
 ```
