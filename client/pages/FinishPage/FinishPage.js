@@ -1,5 +1,8 @@
 import $ from 'jquery';
 
+import Header from '../../components/Header';
+import styles from './FinishPage.css';
+
 export default class FinishPage {
 
   constructor (state) {
@@ -8,10 +11,12 @@ export default class FinishPage {
     this.wpm = state.wpm;
     this.seconds = state.seconds;
     this.accuracy = state.accuracy;
+    this.header = new Header();
   }
 
   init () {
     this.render();
+    $('#header').html(this.header.render());
   }
 
   render () {
@@ -22,25 +27,31 @@ export default class FinishPage {
     const { id, title, wpm, accuracy, seconds } = this;
     return `
       <div>
-        <div class='header'></div>
-        <div class='title'>${title}</div>
-        <div class='stats'>
-          <div class='stat'>
-            <span class='name'>Speed</span>
-            <span class='measure'>${wpm} WPM</span>
+        <div id='header'></div>
+        <div class='container'>
+          <h1 class='${styles.title}'>Result for ${title}</h1>
+          <div class='row ${styles.stats}'>
+            <div class='col col-md-4'>
+              Speed
+              <span class='pull-right'>${wpm} WPM</span>
+            </div>
           </div>
-          <div class='stat'>
-            <span class='name'>Accuracy</span>
-            <span class='measure'>${accuracy}%</span>
+          <div class='row ${styles.stats}'>
+            <div class='col col-md-4'>
+              Accuracy
+              <span class='pull-right'>${accuracy}%</span>
+            </div>
           </div>
-          <div class='stat'>
-            <span class='name'>Time</span>
-            <span class='measure'>${seconds} seconds</span>
+          <div class='row ${styles.stats}'>
+            <div class='col col-md-4'>
+              Time
+              <span class='pull-right'>${seconds.toFixed(1)} s</span>
+            </div>
           </div>
-        </div>
-        <div class='actions'>
-          <a href=nav>menu</a>
-          <a href=texts/${id}>redo</a>
+          <div class='actions'>
+            <a href='nav'>menu</a>
+            <a href='texts/${id}'>redo</a>
+          </div>
         </div>
       </div>
     `;

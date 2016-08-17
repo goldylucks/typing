@@ -1,11 +1,13 @@
 
 .textHeightContainer {
   overflow: hidden;
+  margin-top: 5em;
   height: 230px;
 }
 
 .textContainer {
   position: relative;
+  font-family: monospace;
   width: 900px;
   line-height: 4em;
   margin-right: auto;

@@ -8,6 +8,7 @@
     "start": "npm run client",
     "lint": "eslint --ignore-path .gitignore .",
     "client": "webpack --progress --colors -w",
+    "client:devserver": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors -port 3001",
     "server": "nodemon server/server.js",
     "server:prod": "NODE_ENV=production node server/server.js",
     "server:ci": "NODE_ENV=ci node server/server.js",
