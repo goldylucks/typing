@@ -11,7 +11,7 @@ export default class NavPage {
 
   init () {
     this.render();
-    $('#header').html(this.header.render());
+    this.header.render('#header');
     this.fetchTexts()
       .then(this.renderNav);
   }

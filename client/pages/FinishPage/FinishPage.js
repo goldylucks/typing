@@ -16,7 +16,7 @@ export default class FinishPage {
 
   init () {
     this.render();
-    $('#header').html(this.header.render());
+    this.header.render('#header');
   }
 
   render () {

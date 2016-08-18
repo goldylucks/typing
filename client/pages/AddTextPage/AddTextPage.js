@@ -15,7 +15,7 @@ export default class AddTextPage {
 
   init () {
     this.render();
-    $('#header').html(this.header.render());
+    this.header.render('#header');
   }
 
   render () {
@@ -81,7 +81,7 @@ export default class AddTextPage {
     }
     evt.preventDefault();
     window.alert('Register to add a private text'); // eslint-disable-line no-alert
-    // TODO :: open auth modal
+    $('#authModal').modal('show');
   }
 
   onSubmitSuccess = newText => {

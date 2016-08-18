@@ -12,7 +12,7 @@ export default class MainPage {
 
   init () {
     this.render();
-    $('#header').html(this.header.render());
+    this.header.render('#header');
   }
 
   render () {

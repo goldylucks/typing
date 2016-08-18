@@ -7,6 +7,9 @@ import TextPage from './pages/TextPage';
 import MainPage from './pages/MainPage';
 import FinishPage from './pages/FinishPage';
 import AddTextPage from './pages/AddTextPage';
+import AuthModal from './components/AuthModal';
+
+const authModal = new AuthModal();
 
 $(document).ready(init);
 onEmit('route', onRoute);
@@ -17,6 +20,7 @@ function init () {
   const PageClass = Page(window.location.pathname);
   const page = new PageClass(state);
   page.init();
+  authModal.render('#authModalContainer');
 }
 
 function Page (pathname) {
