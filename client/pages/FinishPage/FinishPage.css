@@ -6,3 +6,9 @@
 .stats {
 	font-size: 2em;
 }
+
+.actions {
+  font-size: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

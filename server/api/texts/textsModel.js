@@ -26,7 +26,13 @@ function getSchema () {
       default: true
     },
 
-    userId: Schema.Types.ObjectId
+    userId: Schema.Types.ObjectId,
+
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      required: true
+    }
 
   });
 }

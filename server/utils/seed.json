@@ -27,11 +27,42 @@
         "_id": "56f045b0cab8bfde77c236d5"
     },
     {
-        "title": "Eve text 1 public",
-        "body": "Eve text 1 public Eve text 1 public Eve text 1 public Eve text 1 public",
+        "title": "Eve text 2 public",
+        "body": "Eve text 2 public Eve text 2 public Eve text 2 public Eve text 2 public",
         "public": true,
         "userId": "56f46365c558e7a529b0b42c",
         "_id": "56f045b7cab8bfde77c236d6"
+    }
+  ],
+
+  "history": [
+    {
+        "text": "56f04089cab8bfde77c236d3",
+        "userId": "56f46358c558e7a529b0b42b",
+        "wpm": 60,
+        "time": 100,
+        "accuracy": 97
+    },
+    {
+        "text": "56f045a7cab8bfde77c236d4",
+        "userId": "56f46358c558e7a529b0b42b",
+        "wpm": 60,
+        "time": 100,
+        "accuracy": 97
+    },
+    {
+        "text": "56f045b0cab8bfde77c236d5",
+        "userId": "56f46365c558e7a529b0b42c",
+        "wpm": 60,
+        "time": 100,
+        "accuracy": 97
+    },
+    {
+        "text": "56f045b7cab8bfde77c236d6",
+        "userId": "56f46365c558e7a529b0b42c",
+        "wpm": 60,
+        "time": 100,
+        "accuracy": 97
     }
   ]
 }

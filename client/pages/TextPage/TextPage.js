@@ -61,8 +61,11 @@ export default class TextPage {
     const { title } = this.textDoc;
     const wpm = stats.calcWpm(this.score);
     const seconds = stats.calcSeconds();
-    const accuracy = stats.calcAccuracy(this.score, this.letterIdx);
+    const accuracy = stats.calcAccuracy(this.letterIdx, this.score);
     document.removeEventListener('keydown', this.onKeyDown);
+    httpService.POST('history', { wpm, accuracy, text: id, time: seconds })
+      .then(res => console.log('[TEXT PAGE]: history saved:', res))
+      .catch(err => console.warn('[TEXT PAGE]: history save error:', err));
     emit('finishText', id, title, wpm, seconds, accuracy);
   }
 
@@ -71,7 +74,7 @@ export default class TextPage {
   }
 
   idFromWindow () {
-    return window.location.pathname.replace('/texts/', '');
+    return window.location.pathname.replace('/texts/', '').replace(/\//g, '');
   }
 
 }

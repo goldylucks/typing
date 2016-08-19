@@ -23,6 +23,7 @@ app.use('/nav', express.static(path.join(__dirname, '..', 'build')));
 app.use('/texts/:id', express.static(path.join(__dirname, '..', 'build')));
 app.use('/add-text', express.static(path.join(__dirname, '..', 'build')));
 app.use('/finish/:id', express.static(path.join(__dirname, '..', 'build')));
+app.use('/history', express.static(path.join(__dirname, '..', 'build')));
 app.use(require('./middlewares/errorMiddleware'));
 
 if (!module.parent) {
