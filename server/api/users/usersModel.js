@@ -23,6 +23,12 @@ function getSchema () {
       type: String,
       select: false,
       required: true
+    },
+
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      required: true
     }
 
   });

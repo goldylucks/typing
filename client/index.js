@@ -7,6 +7,7 @@ import TextPage from './pages/TextPage';
 import MainPage from './pages/MainPage';
 import FinishPage from './pages/FinishPage';
 import AddTextPage from './pages/AddTextPage';
+import HistoryPage from './pages/HistoryPage';
 import AuthModal from './components/AuthModal';
 
 const authModal = new AuthModal();
@@ -38,6 +39,10 @@ function Page (pathname) {
 
   if (pathname.match('/nav')) {
     return NavPage;
+  }
+
+  if (pathname.match('/history')) {
+    return HistoryPage;
   }
 
   return MainPage;
