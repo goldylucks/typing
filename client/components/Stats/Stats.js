@@ -41,7 +41,7 @@ export default class Stats {
     this.$accuracy.text(this.calcAccuracy(letterIdx, score));
     const wpm = this.calcWpm(score);
     this.$wpm.text(
-      letterIdx < 10 ? Math.min(wpm, 160) : wpm // avoid huge WPM on first letters
+      letterIdx < 10 ? 0 : wpm // avoid huge WPM on first letters
     );
   }
 

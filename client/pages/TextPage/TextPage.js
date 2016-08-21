@@ -63,9 +63,6 @@ export default class TextPage {
     const seconds = stats.calcSeconds();
     const accuracy = stats.calcAccuracy(this.letterIdx, this.score);
     document.removeEventListener('keydown', this.onKeyDown);
-    httpService.POST('history', { wpm, accuracy, text: id, time: seconds })
-      .then(res => console.log('[TEXT PAGE]: history saved:', res))
-      .catch(err => console.warn('[TEXT PAGE]: history save error:', err));
     emit('finishText', id, title, wpm, seconds, accuracy);
   }
 

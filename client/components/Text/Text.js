@@ -15,7 +15,7 @@ export default class Text {
       <div class=${styles.textHeightContainer}>
         <div id='text-container' class=${styles.textContainer}>
           <div id='text'></div>
-          <div id='cursor' class=${styles.cursor}></div>
+          <div id='cursor' class=${styles.cursor} style='top: 8px;'></div>
         </div>
       </div>
     `;

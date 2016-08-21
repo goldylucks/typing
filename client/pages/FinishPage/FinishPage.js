@@ -2,6 +2,7 @@ import $ from 'jquery';
 
 import Header from '../../components/Header';
 import httpService from '../../services/httpService';
+import userService from '../../services/userService';
 import styles from './FinishPage.css';
 
 export default class FinishPage {
@@ -19,6 +20,9 @@ export default class FinishPage {
   init () {
     this.render('#appContainer');
     this.header.render('#header');
+    if (!userService.isLogged()) {
+      return;
+    }
     this.fetchHistory()
       .then(this.renderHistory);
   }
@@ -33,7 +37,7 @@ export default class FinishPage {
       <div>
         <div id='header'></div>
         <div class='container'>
-          <h1 class='${styles.title}'>Result for ${title}</h1>
+          <h1 class='${styles.title}'>Result for text ${title}</h1>
           <div class='row ${styles.stats}'>
             <div class='col col-md-4'>
               Speed
@@ -56,26 +60,31 @@ export default class FinishPage {
             <a href='nav'>menu</a>
             <a href='texts/${id}'>redo</a>
           </div>
-          <h2>History</h2>
-          <table class='table table-striped'>
-            <thead>
-              <tr>
-                <th>Text</th>
-                <th>WPM</th>
-                <th>Accuracy</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody id='history'></tbody>
-          </table>
+          <div id='history-container'></div>
         </div>
       </div>
     `;
   }
 
   renderHistory (history) {
+    $('#history-container').html(
+      `
+        <h2>History</h2>
+        <table class='table table-striped'>
+          <thead>
+            <tr>
+              <th>Text</th>
+              <th>WPM</th>
+              <th>Accuracy</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id='history'></tbody>
+        </table>
+      `
+    );
     $('#history').html(
-      history.map(item => {
+      history.reverse().map(item => {
         return `
           <tr>
             <td>${item.text.title}</td>

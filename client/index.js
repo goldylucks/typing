@@ -9,6 +9,8 @@ import FinishPage from './pages/FinishPage';
 import AddTextPage from './pages/AddTextPage';
 import HistoryPage from './pages/HistoryPage';
 import AuthModal from './components/AuthModal';
+import httpService from './services/httpService';
+import userService from './services/userService';
 
 const authModal = new AuthModal();
 
@@ -55,4 +57,10 @@ function onRoute (path, state) {
 
 function onFinishText (id, title, wpm, seconds, accuracy) {
   onRoute(`/finish/${id}`, { id, title, wpm, seconds, accuracy });
+  if (!userService.isLogged()) {
+    return;
+  }
+  httpService.POST('history', { wpm, accuracy, text: id, time: seconds })
+    .then(res => console.log('[TEXT PAGE]: history saved:', res))
+    .catch(err => console.warn('[TEXT PAGE]: history save error:', err));
 }
