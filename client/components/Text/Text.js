@@ -97,11 +97,11 @@ export default class Text {
       return;
     }
     if (top > prevTop) {
-      this.$textContainer.animate({ marginTop: '-=60px' }, 500);
+      this.$textContainer.animate({ marginTop: '-=64px' }, 500);
       return;
     }
     if (top < prevTop) {
-      this.$textContainer.animate({ marginTop: '+=60px' }, 500);
+      this.$textContainer.animate({ marginTop: '+=64px' }, 500);
       return;
     }
   }
