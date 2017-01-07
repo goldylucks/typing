@@ -46,7 +46,7 @@
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "deasync": "^0.1.7",
-    "dotenv": "^2.0.0",
+    "dotenv": "^3.0.0",
     "eslint": "^2.13.1",
     "eslint-config-semistandard": "^6.0.1",
     "eslint-config-standard": "^5.3.1",
