@@ -97,7 +97,7 @@
     "jsonwebtoken": "^7.1.6",
     "lodash": "^4.13.1",
     "method-override": "^2.3.6",
-    "mongodb": "^2.2.1",
+    "mongodb": "^2.2.21",
     "mongoose": "^4.5.9",
     "mongoose-type-email": "^1.0.2",
     "raw-loader": "^0.5.1",
