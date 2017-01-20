@@ -28,7 +28,7 @@
     "url": "https://github.com/goldylucks/typing/issues"
   },
   "devDependencies": {
-    "babel-cli": "^6.8.0",
+    "babel-cli": "^6.22.2",
     "babel-core": "^6.5.2",
     "babel-eslint": "6.0.2",
     "babel-loader": "^6.2.3",
