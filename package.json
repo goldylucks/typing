@@ -81,7 +81,7 @@
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-error-notification": "^0.1.6",
-    "webpack-hot-middleware": "^2.7.1"
+    "webpack-hot-middleware": "^2.16.0"
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
