@@ -75,7 +75,7 @@
     "sinon": "1.17.3",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
-    "supertest": "^1.2.0",
+    "supertest": "^3.0.0",
     "supertest-as-promised": "^3.2.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
