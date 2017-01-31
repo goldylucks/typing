@@ -98,7 +98,7 @@
     "lodash": "^4.13.1",
     "method-override": "^2.3.6",
     "mongodb": "^2.2.1",
-    "mongoose": "^4.5.9",
+    "mongoose": "^4.8.1",
     "mongoose-type-email": "^1.0.2",
     "raw-loader": "^0.5.1",
     "selenium-server-standalone-jar": "^2.53.1"
