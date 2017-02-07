@@ -84,7 +84,7 @@
     "webpack-hot-middleware": "^2.7.1"
   },
   "dependencies": {
-    "bcryptjs": "^2.3.0",
+    "bcryptjs": "^2.4.2",
     "body-parser": "^1.15.2",
     "bootstrap-sass": "^3.3.7",
     "colors": "^1.1.2",
