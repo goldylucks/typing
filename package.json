@@ -68,7 +68,7 @@
     "nodemon": "^1.9.2",
     "postcss-loader": "^0.8.1",
     "pre-git": "^3.8.1",
-    "resolve-url-loader": "^1.6.0",
+    "resolve-url-loader": "^2.0.1",
     "rucksack-css": "^0.8.5",
     "sass-loader": "^4.0.0",
     "selenium-server-standalone-jar": "^2.53.0",
