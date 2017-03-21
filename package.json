@@ -64,7 +64,7 @@
     "mock-local-storage": "1.0.2",
     "morgan": "^1.7.0",
     "nightwatch": "^0.9.5",
-    "node-sass": "^3.8.0",
+    "node-sass": "^4.5.1",
     "nodemon": "^1.9.2",
     "postcss-loader": "^0.8.1",
     "pre-git": "^3.8.1",
