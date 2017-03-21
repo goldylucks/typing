@@ -73,7 +73,7 @@
     "sass-loader": "^4.0.0",
     "selenium-server-standalone-jar": "^2.53.0",
     "sinon": "1.17.3",
-    "sinon-chai": "^2.8.0",
+    "sinon-chai": "^2.9.0",
     "style-loader": "^0.13.1",
     "supertest": "^1.2.0",
     "supertest-as-promised": "^3.2.0",
