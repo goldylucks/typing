@@ -96,7 +96,7 @@
     "jquery": "^3.0.0",
     "jsonwebtoken": "^7.1.6",
     "lodash": "^4.13.1",
-    "method-override": "^2.3.6",
+    "method-override": "^2.3.8",
     "mongodb": "^2.2.1",
     "mongoose": "^4.5.9",
     "mongoose-type-email": "^1.0.2",
