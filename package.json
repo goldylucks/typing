@@ -92,7 +92,7 @@
     "custom-error-generator": "^7.0.0",
     "event-emitter": "^0.3.4",
     "express": "^4.14.0",
-    "express-jwt": "^3.4.0",
+    "express-jwt": "^5.3.0",
     "jquery": "^3.0.0",
     "jsonwebtoken": "^7.1.6",
     "lodash": "^4.13.1",
