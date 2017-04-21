@@ -71,7 +71,7 @@
     "resolve-url-loader": "^1.6.0",
     "rucksack-css": "^0.8.5",
     "sass-loader": "^4.0.0",
-    "selenium-server-standalone-jar": "^2.53.0",
+    "selenium-server-standalone-jar": "^3.4.0",
     "sinon": "1.17.3",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
