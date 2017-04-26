@@ -28,7 +28,7 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
       <head>
         ${head.title}
         ${head.meta}
-        <link href="${STATIC_PATH}/css/main.css" rel="stylesheet" />
+        <link href="${STATIC_PATH}/css/vendor/bootstrap.min.css" rel="stylesheet" />
       </head>
       <body>
         <div class="${APP_CONTAINER_CLASS}">${appHtml}</div>
