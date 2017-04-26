@@ -1,7 +1,7 @@
 import Texts from './textsModel'
 
 const getList = (req, res, next) => {
-  Texts.find()
+  Texts.find().select('-body')
     .then(texts => res.json(texts))
     .catch(next)
 }
