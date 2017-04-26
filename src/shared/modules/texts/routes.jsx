@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom'
 
 import ListPage from './ListPage'
 
-const path = {
+export const path = {
   list: '/texts',
 }
 

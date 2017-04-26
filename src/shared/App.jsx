@@ -8,11 +8,9 @@ import { APP_NAME } from './config'
 import Routes from './Routes'
 
 const App = () =>
-  <div className="main-container site">
+  <div>
     <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
-    <div className="site-content container">
-      <Routes />
-    </div>
+    <Routes />
   </div>
 
 export default App
