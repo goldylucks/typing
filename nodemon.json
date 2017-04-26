@@ -1,3 +1,5 @@
 {
-  "ignore": ["client/", "build/", "scripts/", "test/"]
+  "watch": ["src/server", "src/shared"],
+  "exec": "babel-node",
+  "ext": "js json jsx"
 }

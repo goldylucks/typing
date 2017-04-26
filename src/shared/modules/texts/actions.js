@@ -1,0 +1,4 @@
+// fetchTextsList
+// fetchTextItem
+// createText
+// deleteText
