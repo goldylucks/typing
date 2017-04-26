@@ -11,13 +11,14 @@ import CreateLogger from 'redux-logger'
 import { BrowserRouter } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 
+import texts from '../shared/modules/texts'
 import { APP_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/utils'
 import App from '../shared/App'
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
-// const preloadedState = window.__PRELOADED_STATE__
+const preloadedState = window.__PRELOADED_STATE__
 /* eslint-disable no-underscore-dangle */
 
 const loggerMiddleware = new CreateLogger({
@@ -25,11 +26,13 @@ const loggerMiddleware = new CreateLogger({
   collapsed: true,
 })
 
-const reducers = {}
+const reducers = {
+  texts: texts.reducer,
+}
 
 const store = createStore(
   combineReducers(reducers),
-  undefined, // preloaded state will go here
+  preloadedState,
   composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware)))
 
 const render = (AppComponent, reduxStore) =>
