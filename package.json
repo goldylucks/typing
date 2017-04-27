@@ -57,6 +57,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
     "compression": "^1.6.2",
     "cors": "^2.8.1",
     "custom-error-generator": "^7.0.0",

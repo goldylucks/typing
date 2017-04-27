@@ -15,10 +15,48 @@ const reducer = handleActions({
     ...state,
     list: action.payload,
   }),
+
+  [t.FETCH_ITEM]: (state, action) => ({
+    ...state,
+    byId: Object.assign(
+      {},
+      state.byId,
+      {
+        [action.payload]: {
+          isLoading: true,
+        },
+      },
+    ),
+  }),
+
   [t.FETCH_ITEM_SUCCESS]: (state, action) => ({
     ...state,
-    byId: Object.assign({}, state.byId, { [action.payload._id]: action.payload }),
+    byId: Object.assign(
+      {},
+      state.byId,
+      {
+        [action.payload._id]: {
+          isLoading: false,
+          ...action.payload,
+        },
+      },
+    ),
   }),
+
+  [t.FETCH_ITEM_FAILURE]: (state, action) => ({
+    ...state,
+    byId: Object.assign(
+      {},
+      state.byId,
+      {
+        [action.payload._id]: {
+          isLoading: false,
+          error: action.payload.error,
+        },
+      },
+    ),
+  }),
+
 }, initialState)
 
 export default reducer

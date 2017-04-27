@@ -18,7 +18,7 @@ export const fetchListSuccess = createAction(FETCH_LIST_SUCCESS)
 export const fetchListFailure = createAction(FETCH_LIST_FAILURE)
 export const fetchList = () => (dispatch: Function) => {
   dispatch(fetchListRequest())
-  http(FETCH_LIST_ENDPOINT)
+  return http(FETCH_LIST_ENDPOINT)
   .then((res) => {
     if (!res.ok) throw new Error(res.statusText)
     return res.json()
@@ -35,14 +35,14 @@ export const fetchItemRequest = createAction(FETCH_ITEM)
 export const fetchItemSuccess = createAction(FETCH_ITEM_SUCCESS)
 export const fetchItemFailure = createAction(FETCH_ITEM_FAILURE)
 export const fetchItem = (id: string) => (dispatch: Function) => {
-  dispatch(fetchItemRequest())
-  http(fetchItemEndpoint(id))
+  dispatch(fetchItemRequest(id))
+  return http(fetchItemEndpoint(id))
   .then((res) => {
     if (!res.ok) throw new Error(res.statusText)
     return res.json()
   })
   .then(res => dispatch(fetchItemSuccess(res)))
-  .catch(err => dispatch(fetchItemFailure(err.message)))
+  .catch(err => dispatch(fetchItemFailure({ _id: id, err: err.message })))
 }
 
 // fetchTextItem
