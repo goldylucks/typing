@@ -9,7 +9,7 @@ import NotFoundPage from './NotFoundPage'
 
 const Routes = () =>
   <Switch>
-    {texts.routes.jsx}
+    {texts.router}
     <Route component={() => <NotFoundPage />} />
   </Switch>
 

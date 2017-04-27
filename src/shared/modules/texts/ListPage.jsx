@@ -2,10 +2,12 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 import { Header } from '../../components'
 
 import type { Text as textType } from './model'
+import routes from './routes'
 import { fetchList } from './actions'
 
 class ListPage extends React.Component {
@@ -31,7 +33,7 @@ class ListPage extends React.Component {
           <div className="row">
             <div className="col col-md-12">
               {this.props.texts.map(
-                t => <a className="list-group-item" key={t.title}>{t.title}</a>,
+                t => <NavLink to={routes.item(t._id)} className="list-group-item" key={t.title}>{t.title}</NavLink>,
               )}
             </div>
           </div>

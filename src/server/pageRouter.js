@@ -6,7 +6,7 @@ import { textsListPage } from './pageController'
 import renderApp from './render-app'
 
 const routing = (app: Object) => {
-  app.get(texts.routes.path.list, (req, res) => {
+  app.get(texts.routes.list, (req, res) => {
     res.send(renderApp(req.url, textsListPage()))
   })
 
