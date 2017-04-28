@@ -42,7 +42,7 @@
     "flow-bin": "^0.41.0",
     "git-scripts": "^0.2.1",
     "jest": "^19.0.2",
-    "lint-staged": "^3.4.0",
+    "lint-staged": "^3.4.1",
     "nodemon": "^1.11.0",
     "pm2": "^2.4.2",
     "react-autocomplete-cli": "^0.0.3",
