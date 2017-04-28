@@ -16,46 +16,28 @@ const reducer = handleActions({
     list: action.payload,
   }),
 
-  [t.FETCH_ITEM]: (state, action) => ({
-    ...state,
-    byId: Object.assign(
-      {},
-      state.byId,
-      {
-        [action.payload]: {
-          isLoading: true,
-        },
-      },
-    ),
-  }),
+  [t.FETCH_ITEM]: (state, action) => {
+    const byId = Object.assign({}, state.byId)
+    byId[action.payload] = { isLoading: true }
+    return { ...state, byId }
+  },
 
-  [t.FETCH_ITEM_SUCCESS]: (state, action) => ({
-    ...state,
-    byId: Object.assign(
-      {},
-      state.byId,
-      {
-        [action.payload._id]: {
-          isLoading: false,
-          ...action.payload,
-        },
-      },
-    ),
-  }),
+  [t.FETCH_ITEM_SUCCESS]: (state, action) => {
+    const byId = Object.assign({}, state.byId)
+    byId[action.payload._id] = {
+      isLoading: false,
+      ...action.payload,
+    }
+    return { ...state, byId }
+  },
 
-  [t.FETCH_ITEM_FAILURE]: (state, action) => ({
-    ...state,
-    byId: Object.assign(
-      {},
-      state.byId,
-      {
-        [action.payload._id]: {
-          isLoading: false,
-          error: action.payload.error,
-        },
-      },
-    ),
-  }),
+  [t.FETCH_ITEM_FAILURE]: (state, action) => {
+    const byId = Object.assign({}, state.byId)
+    byId[action.payload._id] = {
+      isLoading: false,
+      error: action.payload.error,
+    }
+  },
 
 }, initialState)
 

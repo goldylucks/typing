@@ -70,6 +70,7 @@ class ItemPage extends React.Component {
       return
     }
 
+    // flow-disable-next-line
     const isCorrect = key === this.props.text.body.split('')[this.state.activeLetterIdx]
 
     this.setState(state => ({
