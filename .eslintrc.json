@@ -1,18 +1,24 @@
 {
-  "extends": ["semistandard"],
-  "parser": "babel-eslint",
   "env": {
-    "mocha": true,
-    "node": true
+    "jest": true,
+    "browser": true
   },
-  "globals": {
-    "expect": true,
-    "SHOUT": true
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "flowtype"
+  ],
+  "settings": {
+    "polyfills": ["fetch"]
   },
   "rules": {
-    "object-curly-spacing": ["error", "always"],
-    "arrow-parens": ["error", "as-needed"],
-    "no-debugger": "error",
-    "no-alert": "error"
+    "import/order": [2, {"newlines-between": "always"}],
+    "semi": [2, "never"],
+    "jsx-a11y/no-static-element-interactions": 0,
+    "no-unexpected-multiline": 2,
+    "no-param-reassign": ["error", { "ignorePropertyModificationsFor": ["req"] }],
+    "no-underscore-dangle": [2, { "allow": ["_id"] }]
   }
 }

@@ -1,0 +1,14 @@
+.cursor {
+  border-bottom: #3879D9 2px solid;
+  position: absolute;
+  width: 21px;
+  height: 40px;
+  opacity: 0;
+  background: white;
+  top: 0;
+  left: 0;
+}
+
+.cursor.active {
+  opacity: .5;
+}
