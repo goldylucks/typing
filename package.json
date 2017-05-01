@@ -38,7 +38,7 @@
     "eslint-plugin-flowtype": "^2.30.3",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2 || ^4.0.0",
-    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-react": "^6.10.3",
     "flow-bin": "^0.41.0",
     "git-scripts": "^0.2.1",
     "jest": "^19.0.2",
