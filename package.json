@@ -68,7 +68,7 @@
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.1",
     "morgan": "^1.8.1",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.5.9",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-helmet": "^4.0.0",
