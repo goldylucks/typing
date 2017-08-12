@@ -7,8 +7,8 @@ import { Route } from 'react-router-dom'
 
 import texts from './modules/texts'
 import NotFoundPage from './NotFoundPage'
-import MainPage from './components/pages/MainPage'
-import AddText from './components/pages/AddText'
+import MainPage from './pages/MainPage'
+import AddText from './pages/AddText'
 
 const Routes = () =>
   <Switch>

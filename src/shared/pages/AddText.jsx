@@ -3,7 +3,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-import { Header } from '../../components'
+import { Header } from '../components'
 
 const AddTextForm = () => {
   // const { handleSubmit } = props

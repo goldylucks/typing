@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
 import { Link } from 'react-router-dom'
 
-import { Header } from '../../components'
+import { Header } from '../components'
 
 const MainPage = ({ classes }: { classes: Object}) => (
   <div>
