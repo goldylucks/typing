@@ -8,13 +8,13 @@ import { Route } from 'react-router-dom'
 import texts from './modules/texts'
 import NotFoundPage from './NotFoundPage'
 import MainPage from './pages/MainPage'
-import AddText from './pages/AddText'
+import AddTextPage from './modules/add_texts/AddTextPage'
 
 const Routes = () =>
   <Switch>
     {texts.router}
     <Route path="/" component={MainPage} exact />
-    <Route path="/add-text" component={AddText} exact />
+    <Route path="/add-text" component={AddTextPage} exact />
     <Route component={() => <NotFoundPage />} />
   </Switch>
 
