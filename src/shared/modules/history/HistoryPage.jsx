@@ -13,15 +13,18 @@ class HistoryPage extends Component {
     ],
   }
 
-  renderHistoryList = () =>
-    this.state.history.map((history) =>
-      <tr key={history.title}>
-        <td>{history.title}</td>
-        <td>{history.wpm}</td>
-        <td>{history.accuracy}</td>
-        <td>{history.date}</td>
-      </tr>,
+  renderHistoryList() {
+    return (
+      this.state.history.map(history =>
+        <tr key={history.title}>
+          <td>{history.title}</td>
+          <td>{history.wpm}</td>
+          <td>{history.accuracy}</td>
+          <td>{history.date}</td>
+        </tr>,
+      )
     )
+  }
 
   render() {
     return (

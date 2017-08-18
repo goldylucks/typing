@@ -1,4 +1,5 @@
 // @flow
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["submit"] }] */
 
 import React, { Component } from 'react'
 

@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
 import { Link } from 'react-router-dom'
 
@@ -25,8 +24,10 @@ const MainPage = ({ classes }: { classes: Object}) => (
       <div className={`row ${classes.footnote}`}>
         <div className="col col-md-12">
           <p>
-            <strong>NOTE:</strong> This is NOT a tutorial / beginner's guide for blind typing. If u r totally new to blind typing, I recommended 
-            <Link to="//typingclub.com" target="_blank">this</Link> resource (it's how I got started).
+            <strong>NOTE:</strong>
+            This is NOT a tutorial / beginner{"'"}s guide for blind typing.
+            If u r totally new to blind typing, I recommended
+            <Link to="//typingclub.com" target="_blank"> this</Link> resource (it{"'"}s how I got started).
           </p>
         </div>
       </div>
