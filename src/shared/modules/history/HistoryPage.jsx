@@ -1,8 +1,11 @@
 // @flow
 
 import React, { Component } from 'react'
+import Helmet from 'react-helmet'
 
 import { Header } from '../../components'
+
+const title = 'My History'
 
 class HistoryPage extends Component {
 
@@ -29,6 +32,13 @@ class HistoryPage extends Component {
   render() {
     return (
       <div>
+        <Helmet
+          title={title}
+          meta={[
+            { name: 'description', content: 'My recorded typing text' },
+            { property: 'og:title', content: title },
+          ]}
+        />
         <Header />
         <div className="container">
           <h1>Your typing history</h1>

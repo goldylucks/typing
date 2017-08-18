@@ -2,10 +2,13 @@
 /* eslint class-methods-use-this: ["error", { "exceptMethods": ["submit"] }] */
 
 import React, { Component } from 'react'
+import Helmet from 'react-helmet'
 
 import { Header } from '../../components'
 
 import AddTextForm from './AddTextForm'
+
+const title = 'Add New Text'
 
 class AddTextPage extends Component {
   submit(values: Object) {
@@ -16,6 +19,13 @@ class AddTextPage extends Component {
   render() {
     return (
       <div>
+        <Helmet
+          title={title}
+          meta={[
+            { name: 'description', content: 'Practice typing your own creative text' },
+            { property: 'og:title', content: title },
+          ]}
+        />
         <Header />
         <div className="container">
           <div className="row">

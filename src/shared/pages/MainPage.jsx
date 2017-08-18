@@ -3,11 +3,19 @@
 import React from 'react'
 import injectSheet from 'react-jss'
 import { Link } from 'react-router-dom'
+import Helmet from 'react-helmet'
 
+import { APP_NAME } from '../config'
 import { Header } from '../components'
 
 const MainPage = ({ classes }: { classes: Object}) => (
   <div>
+    <Helmet
+      meta={[
+        { name: 'description', content: `${APP_NAME} is an app to practice your typing skills` },
+        { property: 'og:title', content: APP_NAME },
+      ]}
+    />
     <Header />
     <div className="container">
       <div className={`row ${classes.title}`}>

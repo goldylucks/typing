@@ -3,12 +3,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import Helmet from 'react-helmet'
 
 import { Header } from '../../components'
 
 import type { Text as textType } from './model'
 import routes from './routes'
 import { fetchList } from './actions'
+
+const title = 'Text List'
 
 class ListPage extends React.Component {
   componentWillMount() {
@@ -23,6 +26,13 @@ class ListPage extends React.Component {
   render() {
     return (
       <div>
+        <Helmet
+          title={title}
+          meta={[
+            { name: 'description', content: 'The list of all available text to practice typing' },
+            { property: 'og:title', content: title },
+          ]}
+        />
         <Header />
         <div className="container">
           <div className="row">
