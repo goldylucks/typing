@@ -9,7 +9,14 @@ type Props = {
   handleSubmit: Function,
 }
 
-const renderField = ({ input, label, name, type, meta: { touched, error } }) =>
+type Fields = {
+  label: string,
+  name: string,
+  type: string,
+  input: Object,
+}
+
+const renderField = ({ input, label, name, type }: Fields) =>
   <div className="form-group">
     <label htmlFor={name}>{label}</label>
     <div>
@@ -18,26 +25,14 @@ const renderField = ({ input, label, name, type, meta: { touched, error } }) =>
   </div>
 
 const LoginForm = ({ handleSubmit }: Props) =>
-  <div id="loginModal" className="modal fade">
-    <div className="modal-dialog">
-      <div className="modal-content">
-        <div className="modal-header">
-          <button type="button" className="close" data-dismiss="modal">×</button>
-          <h5 className="modal-title">Signup</h5>
-        </div>
-        <div className="modal-body">
-          <form onSubmit={handleSubmit(submit)}>
-            <Field name="email" type="text" component={renderField} label="Type your email here" />
-            <Field name="password" type="password" component={renderField} label="Type your super secret password here" />
-            <div className="modal-footer">
-              <button type="button" className="btn btn-default" id="login">Login</button>
-              <button type="button" className="btn btn-primary" id="signup">Signup</button>
-            </div>
-          </form>
-        </div>
-      </div>
+  <form onSubmit={handleSubmit(submit)}>
+    <Field name="email" type="text" component={renderField} label="Type your email here" />
+    <Field name="password" type="password" component={renderField} label="Type your super secret password here" />
+    <div className="modal-footer">
+      <button type="button" className="btn btn-default" id="login">Login</button>
+      <button type="button" className="btn btn-primary" id="signup">Signup</button>
     </div>
-  </div>
+  </form>
 
 export default reduxForm({
   form: 'login',

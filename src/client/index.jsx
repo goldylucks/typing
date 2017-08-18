@@ -11,17 +11,11 @@ import CreateLogger from 'redux-logger'
 import { BrowserRouter } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 import { reducer as formReducer } from 'redux-form'
-import $ from 'jquery'
-import Tether from 'tether'
 
 import texts from '../shared/modules/texts'
 import { APP_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/utils'
 import App from '../shared/App'
-
-window.jQuery = $
-window.Tether = Tether
-require('bootstrap')
 
 const jssServerSide = document.querySelector(JSS_SSR_SELECTOR)
 // flow-disable-next-line
