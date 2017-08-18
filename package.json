@@ -14,7 +14,7 @@
   "git": {
     "scripts": {
       "pre-commit": "yarn lint-staged",
-      "pre-push": "yarn lint && flow && prod:build && ut"
+      "pre-push": "yarn lint && yarn flow && yarn prod:build && yarn ut"
     }
   },
   "lint-staged": {

@@ -30,7 +30,7 @@ class Header extends React.Component {
   }
 
   state: {
-    modalIsOpen: Boolean,
+    modalIsOpen: boolean,
   }
 
   openModal: Function
