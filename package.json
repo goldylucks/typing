@@ -7,18 +7,19 @@
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete server",
     "ut": "jest --runInBand --forceExit",
-    "test": "yarn lint && flow",
-    "lint": "lint-staged",
-    "ci:test": "yarn eslint src/**/*.js webpack.config.babel.js && flow && yarn ut",
+    "lint": "eslint src/**/*.{js,jsx} webpack.config.babel.js",
+    "lint-staged": "lint-staged",
     "generate": "rc-autocomplete"
   },
   "git": {
     "scripts": {
-      "pre-commit": "yarn test"
+      "pre-commit": "lint-staged",
+      "pre-push": "lint && flow && prod:build && ut"
     }
   },
   "lint-staged": {
     "src/**/*.js": "eslint",
+    "src/**/*.jsx": "eslint",
     "webpack.config.babel.js": "eslint"
   },
   "devDependencies": {
