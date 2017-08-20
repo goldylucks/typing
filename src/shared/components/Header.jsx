@@ -4,43 +4,31 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Modal from 'react-modal'
 
-import LoginForm from '../modules/auth_modal/LoginForm'
+import LoginForm from '../modules/authModal/LoginForm'
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    transform: 'translate(-50%, -50%)',
-    minWidth: '600px',
+const styles = {
+  authModal: {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      transform: 'translate(-50%, -50%)',
+      minWidth: '600px',
+    },
   },
 }
 
 class Header extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-      modalIsOpen: false,
-    }
-
-    this.openModal = this.openModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
+  state = {
+    modalIsOpen: false,
   }
 
-  state: {
-    modalIsOpen: boolean,
-  }
-
-  openModal: Function
-  closeModal: Function
-
-  openModal() {
+  openModal = () => {
     this.setState({ modalIsOpen: true })
   }
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ modalIsOpen: false })
   }
 
@@ -62,7 +50,7 @@ class Header extends React.Component {
                   <NavLink to={link.route} className="nav-link" activeStyle={{ color: 'black' }} exact>{link.label}</NavLink>
                 </li>
               ))}
-              <li><NavLink to="/#" className="nav-item" onClick={this.openModal} activeStyle={{ color: 'black' }} exact>Login</NavLink></li>
+              <li><a className="nav-item" onClick={this.openModal}>Login</a></li>
             </ul>
           </div>
         </nav>
@@ -70,7 +58,7 @@ class Header extends React.Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           contentLabel="Signup"
-          style={customStyles}
+          style={styles.authModal}
         >
           <div className="modal-header">
             <button className="close" onClick={this.closeModal}><span aria-hidden="true">&times;</span></button>
