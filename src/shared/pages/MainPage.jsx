@@ -33,9 +33,9 @@ const MainPage = ({ classes }: { classes: Object}) => (
         <div className="col col-md-12">
           <p>
             <strong>NOTE:</strong>
-            This is NOT a tutorial / beginner{"'"}s guide for blind typing.
+            This is NOT a tutorial / beginner&apos;s guide for blind typing.
             If u r totally new to blind typing, I recommended
-            <Link to="//typingclub.com" target="_blank"> this</Link> resource (it{"'"}s how I got started).
+            <a href="//typingclub.com" target="_blank" rel="noopener noreferrer"> this</a> resource (it&apos;s how I got started).
           </p>
         </div>
       </div>
