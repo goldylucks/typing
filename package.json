@@ -7,18 +7,19 @@
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete server",
     "ut": "jest --runInBand --forceExit",
-    "test": "yarn lint && flow",
-    "lint": "lint-staged",
-    "ci:test": "yarn eslint src/**/*.js webpack.config.babel.js && flow && yarn ut",
+    "lint": "eslint src/**/*.{js,jsx} webpack.config.babel.js",
+    "lint-staged": "lint-staged",
     "generate": "rc-autocomplete"
   },
   "git": {
     "scripts": {
-      "pre-commit": "yarn test"
+      "pre-commit": "yarn lint-staged",
+      "pre-push": "yarn lint && yarn flow && yarn prod:build && yarn ut"
     }
   },
   "lint-staged": {
     "src/**/*.js": "eslint",
+    "src/**/*.jsx": "eslint",
     "webpack.config.babel.js": "eslint"
   },
   "devDependencies": {
@@ -58,6 +59,7 @@
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
+    "colors": "^1.1.2",
     "compression": "^1.6.2",
     "cors": "^2.8.1",
     "custom-error-generator": "^7.0.0",
@@ -68,15 +70,16 @@
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.1",
     "morgan": "^1.8.1",
-    "prop-types": "^15.5.8",
-    "react": "^15.4.2",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
     "react-dom": "^15.4.2",
     "react-helmet": "^4.0.0",
     "react-hot-loader": "next",
     "react-jss": "^6.1.1",
+    "react-modal": "^2.2.4",
     "react-redux": "^5.0.3",
-    "react-router": "next",
-    "react-router-dom": "next",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.1",
     "redux-form": "^6.6.1",

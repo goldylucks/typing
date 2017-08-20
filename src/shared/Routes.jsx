@@ -6,10 +6,16 @@ import { Route } from 'react-router-dom'
 
 import texts from './modules/texts'
 import NotFoundPage from './NotFoundPage'
+import MainPage from './pages/MainPage'
+import AddTextPage from './modules/addTexts/AddTextPage'
+import History from './modules/history/HistoryPage'
 
 const Routes = () =>
   <Switch>
     {texts.router}
+    <Route path="/" component={MainPage} exact />
+    <Route path="/add-text" component={AddTextPage} exact />
+    <Route path="/history" component={History} exact />
     <Route component={() => <NotFoundPage />} />
   </Switch>
 

@@ -3,6 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import injectSheet from 'react-jss'
+import Helmet from 'react-helmet'
 
 import { calcMinutesDifference } from '../../utils/time'
 
@@ -114,6 +115,12 @@ class ItemPage extends React.Component {
     if (text.error) return <h1>Error Loading Text :(</h1>
     return (
       <div>
+        <Helmet
+          title={text.title}
+          meta={[
+            { property: 'og:title', content: text.title },
+          ]}
+        />
         <div className={classes.textHeightContainer}>
           <div className={classes.textContainer}>
             <div>

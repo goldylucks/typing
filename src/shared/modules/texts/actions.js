@@ -2,7 +2,7 @@
 
 import { createAction } from 'redux-actions'
 
-import { http } from '../../utils'
+import http from '../../utils/http'
 
 import {
   FETCH_LIST as FETCH_LIST_ENDPOINT,

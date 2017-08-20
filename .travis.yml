@@ -2,7 +2,7 @@ language: node_js
 node_js: node
 services:
   - mongodb
-script: yarn ci:test && yarn prod:build
+script: yarn lint && yarn flow && yarn prod:build && yarn ut
 branches:
   only:
   - master

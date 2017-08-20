@@ -2,12 +2,24 @@
 
 import texts from '../shared/modules/texts'
 
-import { textsListPage } from './pageController'
+import { textsListPage, mainPage, addTextPage, historyPage } from './pageController'
 import renderApp from './render-app'
 
 const routing = (app: Object) => {
+  app.get('/', (req, res) => {
+    res.send(renderApp(req.url, mainPage()))
+  })
+
   app.get(texts.routes.list, (req, res) => {
     res.send(renderApp(req.url, textsListPage()))
+  })
+
+  app.get('/add-text', (req, res) => {
+    res.send(renderApp(req.url, addTextPage()))
+  })
+
+  app.get('/history', (req, res) => {
+    res.send(renderApp(req.url, historyPage()))
   })
 
   app.get('*', (req, res) => {

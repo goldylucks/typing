@@ -12,7 +12,7 @@ const parseJSON = (response: Object) =>
     })),
   )
 
-const request = (endpoint: string, options: Object) =>
+const request = (endpoint: string, options?: Object) =>
   new Promise((resolve, reject) => {
     fetch(endpoint, options)
       .then(parseJSON)
