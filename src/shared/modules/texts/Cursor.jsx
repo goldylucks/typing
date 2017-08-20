@@ -36,6 +36,12 @@ class Cursor extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    if (this.blinkInterval) {
+      clearInterval(this.blinkInterval)
+    }
+  }
+
   blinkInterval = null
 
   props: {
