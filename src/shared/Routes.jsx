@@ -9,6 +9,7 @@ import NotFoundPage from './NotFoundPage'
 import MainPage from './pages/MainPage'
 import AddTextPage from './modules/addTexts/AddTextPage'
 import History from './modules/history/HistoryPage'
+import parent from './components/MyParent'
 
 const Routes = () =>
   <Switch>
@@ -16,6 +17,7 @@ const Routes = () =>
     <Route path="/" component={MainPage} exact />
     <Route path="/add-text" component={AddTextPage} exact />
     <Route path="/history" component={History} exact />
+    <Route path="/parent" component={parent} exact />
     <Route component={() => <NotFoundPage />} />
   </Switch>
 
