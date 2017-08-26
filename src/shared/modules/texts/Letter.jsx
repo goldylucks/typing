@@ -32,9 +32,10 @@ type Props = {
   isCorrect: ?boolean,
   isWrong: ?boolean,
   classes: Object,
+  letterRef: Function,
 }
 
-const Letter = ({ letter, wasWrong, isCorrect, isWrong, classes }: Props) =>
+const Letter = ({ letter, wasWrong, isCorrect, isWrong, classes, letterRef }: Props) =>
   <span
     className={cx(
       classes.letter,
@@ -42,5 +43,6 @@ const Letter = ({ letter, wasWrong, isCorrect, isWrong, classes }: Props) =>
       isWrong && classes.isWrong,
       isCorrect && wasWrong && classes.isCorrectWasWrong,
     )}
+    ref={letterRef}
   >{letter}</span>
 export default injectSheet(styles)(Letter)

@@ -39,6 +39,10 @@ class ItemPage extends React.Component {
     activeLetterIdx: 0,
     isActive: false,
     started: 0,
+    cursor: {
+      top: 8,
+      left: 0,
+    },
   }
 
   componentWillMount() {
@@ -61,8 +65,13 @@ class ItemPage extends React.Component {
       return
     }
 
+    if (evt.keyCode === 32) {
+      evt.preventDefault()
+    }
+
     if (key === 'Backspace') {
       if (this.state.activeLetterIdx === 0) return
+      this.adjustCursorPosition(this.state.activeLetterIdx - 1)
       this.setState(state => ({
         activeLetterIdx: state.activeLetterIdx - 1,
         [`letter-${state.activeLetterIdx - 1}-isCorrect`]: false,
@@ -74,6 +83,7 @@ class ItemPage extends React.Component {
     // flow-disable-next-line
     const isCorrect = key === this.props.text.body.split('')[this.state.activeLetterIdx]
 
+    this.adjustCursorPosition(this.state.activeLetterIdx + 1)
     this.setState(state => ({
       activeLetterIdx: state.activeLetterIdx + 1,
       [`letter-${state.activeLetterIdx}-isCorrect`]: isCorrect,
@@ -83,6 +93,8 @@ class ItemPage extends React.Component {
       started: state.started || Date.now(),
     }))
   }
+
+  letterElement = []
 
   calcCorrect() {
     return Object.keys(this.state)
@@ -101,6 +113,12 @@ class ItemPage extends React.Component {
   calcAccuracy() {
     if (!this.state.activeLetterIdx) return 0
     return Math.floor((this.calcCorrect() / this.state.activeLetterIdx) * 100)
+  }
+
+  adjustCursorPosition(nextLetterIdx) {
+    const top = this.letterElement[nextLetterIdx].offsetTop
+    const left = this.letterElement[nextLetterIdx].offsetLeft
+    this.setState({ cursor: { top, left } })
   }
 
   props: {
@@ -133,12 +151,15 @@ class ItemPage extends React.Component {
                     isCorrect={this.state[`letter-${idx}-isCorrect`]}
                     isWrong={this.state[`letter-${idx}-isWrong`]}
                     wasWrong={this.state[`letter-${idx}-wasWrong`]}
+                    letterRef={(el) => { this.letterElement[idx] = el }}
                   />,
               )}
             </div>
             <Cursor
               shouldBeActive={this.state.isActive}
               activeLetterIdx={this.state.activeLetterIdx}
+              top={this.state.cursor.top}
+              left={this.state.cursor.left}
             />
           </div>
         </div>

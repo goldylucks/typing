@@ -4,9 +4,6 @@ import React from 'react'
 import injectSheet from 'react-jss'
 import cx from 'classnames'
 
-const INITIAL_OFFSET_TOP = 9
-const LETTERS_IN_ROW = 40
-const LINE_HEIGHT_DIFF = 63
 const LETTERS_HEIGHT = 40
 const LETTER_WIDTH = 21.0625
 
@@ -18,6 +15,7 @@ const styles = {
     height: LETTERS_HEIGHT,
     opacity: 0,
     background: 'white',
+    top: 8,
   },
   isDisplayed: {
     opacity: 0.5,
@@ -47,7 +45,8 @@ class Cursor extends React.Component {
   props: {
     classes: Object,
     shouldBeActive: boolean,
-    activeLetterIdx: number,
+    top: number,
+    left: number,
   }
 
   blink = () => this.setState(state => ({
@@ -55,19 +54,14 @@ class Cursor extends React.Component {
   }))
 
   render() {
-    const { classes, activeLetterIdx } = this.props
+    const { classes, top, left } = this.props
     return (
       <div
         className={cx(
           classes.cursor,
           { [classes.isDisplayed]: this.state.isDisplayed },
         )}
-        style={{
-          left: (activeLetterIdx % LETTERS_IN_ROW) * LETTER_WIDTH,
-          top: INITIAL_OFFSET_TOP + (
-            Math.floor((activeLetterIdx) / LETTERS_IN_ROW) * LINE_HEIGHT_DIFF
-          ),
-        }}
+        style={{ left, top }}
       />
     )
   }
