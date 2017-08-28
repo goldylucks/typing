@@ -43,6 +43,7 @@ class ItemPage extends React.Component {
       top: 8,
       left: 0,
     },
+    moveTextContainer: 0,
   }
 
   componentWillMount() {
@@ -72,6 +73,7 @@ class ItemPage extends React.Component {
     if (key === 'Backspace') {
       if (this.state.activeLetterIdx === 0) return
       this.adjustCursorPosition(this.state.activeLetterIdx - 1)
+      this.adjustTextContainerHeight(this.state.activeLetterIdx, this.state.activeLetterIdx - 1)
       this.setState(state => ({
         activeLetterIdx: state.activeLetterIdx - 1,
         [`letter-${state.activeLetterIdx - 1}-isCorrect`]: false,
@@ -84,6 +86,7 @@ class ItemPage extends React.Component {
     const isCorrect = key === this.props.text.body.split('')[this.state.activeLetterIdx]
 
     this.adjustCursorPosition(this.state.activeLetterIdx + 1)
+    this.adjustTextContainerHeight(this.state.activeLetterIdx, this.state.activeLetterIdx + 1)
     this.setState(state => ({
       activeLetterIdx: state.activeLetterIdx + 1,
       [`letter-${state.activeLetterIdx}-isCorrect`]: isCorrect,
@@ -121,6 +124,23 @@ class ItemPage extends React.Component {
     this.setState({ cursor: { top, left } })
   }
 
+  adjustTextContainerHeight(activeLetterIdx, nextLetterIdx) {
+    const prevTop = this.letterElement[activeLetterIdx].offsetTop
+    const top = this.letterElement[nextLetterIdx].offsetTop
+
+    if (top < 126) {
+      return
+    }
+
+    if (top > prevTop) {
+      this.setState({ moveTextContainer: this.state.moveTextContainer -= 64 })
+    }
+
+    if (top < prevTop) {
+      this.setState({ moveTextContainer: this.state.moveTextContainer += 64 })
+    }
+  }
+
   props: {
     text: ?textType,
     classes: Object,
@@ -131,6 +151,7 @@ class ItemPage extends React.Component {
     const { classes, text } = this.props
     if (!text || text.isLoading) return <h1>Loading Text...</h1>
     if (text.error) return <h1>Error Loading Text :(</h1>
+
     return (
       <div>
         <Helmet
@@ -140,7 +161,10 @@ class ItemPage extends React.Component {
           ]}
         />
         <div className={classes.textHeightContainer}>
-          <div className={classes.textContainer}>
+          <div
+            className={classes.textContainer}
+            style={{ marginTop: this.state.moveTextContainer }}
+          >
             <div>
               {text.body.split('').map(
                 (l, idx) =>
