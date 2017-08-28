@@ -2,7 +2,7 @@
 
 import texts from '../shared/modules/texts'
 
-import { textsListPage, mainPage, addTextPage, historyPage } from './pageController'
+import { textsListPage, mainPage, addTextPage, historyPage, finishPage } from './pageController'
 import renderApp from './render-app'
 
 const routing = (app: Object) => {
@@ -20,6 +20,10 @@ const routing = (app: Object) => {
 
   app.get('/history', (req, res) => {
     res.send(renderApp(req.url, historyPage()))
+  })
+
+  app.get('/finish', (req, res) => {
+    res.send(renderApp(req.url, finishPage()))
   })
 
   app.get('*', (req, res) => {

@@ -8,3 +8,5 @@ export const mainPage = () => null
 export const addTextPage = () => null
 
 export const historyPage = () => null
+
+export const finishPage = () => null
