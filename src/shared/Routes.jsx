@@ -9,7 +9,6 @@ import NotFoundPage from './NotFoundPage'
 import MainPage from './pages/MainPage'
 import AddTextPage from './modules/addTexts/AddTextPage'
 import History from './modules/history/HistoryPage'
-import Finish from './modules/finish/FinishPage'
 
 const Routes = () =>
   <Switch>
@@ -17,7 +16,6 @@ const Routes = () =>
     <Route path="/" component={MainPage} exact />
     <Route path="/add-text" component={AddTextPage} exact />
     <Route path="/history" component={History} exact />
-    <Route path="/finish" component={Finish} exact />
     <Route component={() => <NotFoundPage />} />
   </Switch>
 

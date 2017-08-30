@@ -6,6 +6,7 @@ import injectSheet from 'react-jss'
 import Helmet from 'react-helmet'
 
 import { calcMinutesDifference } from '../../utils/time'
+import FinishPage from '../finish/FinishPage'
 
 import type { Text as textType } from './model'
 import { fetchItem } from './actions'
@@ -44,19 +45,26 @@ class ItemPage extends React.Component {
       left: 0,
     },
     moveTextContainer: 0,
+    renderFinish: false,
   }
 
   componentWillMount() {
+    // eslint-disable-next-line
+    console.log('componendWillMount')
     global.calcCorrect = this.calcCorrect
     global.calcMinutes = this.calcMinutes
     this.props.fetchText()
   }
 
   componentDidMount() {
+    // eslint-disable-next-line
+    console.log('componentDidMount')
     document.addEventListener('keydown', this.onKeyDown)
   }
 
   componentWillUnmount() {
+    // eslint-disable-next-line
+    console.log('componentWillunMount')
     document.removeEventListener('keydown', this.onKeyDown)
   }
 
@@ -84,9 +92,14 @@ class ItemPage extends React.Component {
 
     // flow-disable-next-line
     const isCorrect = key === this.props.text.body.split('')[this.state.activeLetterIdx]
+    const isFinished = this.checkEndOfText(this.state.activeLetterIdx + 1)
 
-    this.adjustCursorPosition(this.state.activeLetterIdx + 1)
-    this.adjustTextContainerHeight(this.state.activeLetterIdx, this.state.activeLetterIdx + 1)
+    if (isFinished) {
+      this.setState({ renderFinish: true })
+    } else {
+      this.adjustCursorPosition(this.state.activeLetterIdx + 1)
+      this.adjustTextContainerHeight(this.state.activeLetterIdx, this.state.activeLetterIdx + 1)
+    }
     this.setState(state => ({
       activeLetterIdx: state.activeLetterIdx + 1,
       [`letter-${state.activeLetterIdx}-isCorrect`]: isCorrect,
@@ -141,6 +154,11 @@ class ItemPage extends React.Component {
     }
   }
 
+  checkEndOfText(idx) {
+    // flow-disable-next-line
+    return idx === this.props.text.body.length
+  }
+
   props: {
     text: ?textType,
     classes: Object,
@@ -151,6 +169,18 @@ class ItemPage extends React.Component {
     const { classes, text } = this.props
     if (!text || text.isLoading) return <h1>Loading Text...</h1>
     if (text.error) return <h1>Error Loading Text :(</h1>
+    if (this.state.renderFinish) {
+      // <Redirect to="/finish" />
+      return (
+        <FinishPage
+          id={text._id}
+          title={text.title}
+          wpm={this.calcWpm()}
+          accuracy={this.calcAccuracy()}
+          sec={this.calcMinutes()}
+        />
+      )
+    }
 
     return (
       <div>
