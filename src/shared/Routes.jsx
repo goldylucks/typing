@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { Switch } from 'react-router'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import texts from './modules/texts'
 import NotFoundPage from './NotFoundPage'
@@ -10,13 +11,35 @@ import MainPage from './pages/MainPage'
 import AddTextPage from './modules/addTexts/AddTextPage'
 import History from './modules/history/HistoryPage'
 
-const Routes = () =>
+/* eslint-disable */
+const PrivateRoute = ({ component: Component, authenticated, ...props }) =>
+  <Route
+    {...props} render={() => (
+    authenticated === true ? (
+      <Component {...props} />
+    ) : (
+      <Redirect
+        to={{
+          pathname: '/',
+          state: { from: props.location },
+        }}
+      />
+    )
+    )}
+  />
+/* eslint-enable */
+
+const Routes = (props: Object) =>
   <Switch>
     {texts.router}
     <Route path="/" component={MainPage} exact />
     <Route path="/add-text" component={AddTextPage} exact />
-    <Route path="/history" component={History} exact />
+    <PrivateRoute authenticated={props.authenticated} path="/history" component={History} />
     <Route component={() => <NotFoundPage />} />
   </Switch>
 
-export default Routes
+const mapStateToProps = state => ({
+  authenticated: state.auth.authenticated,
+})
+
+export default connect(mapStateToProps)(Routes)
