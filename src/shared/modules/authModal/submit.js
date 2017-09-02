@@ -1,13 +1,16 @@
 // @flow
 
 import { SubmissionError } from 'redux-form'
+import type { Dispatch } from 'redux'
+
+import * as Actions from './actions'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-const submit = (values: Object) =>
+const submit = (values: Object, dispatch: Dispatch<*>) =>
   sleep(1000).then(() => {
     // simulate server latency
-    if (!['matthew', 'mark', 'luke', 'john'].includes(values.username)) {
+    if (!['matthew', 'mark', 'luke', 'john'].includes(values.email)) {
       throw new SubmissionError({
         username: 'User does not exist',
         _error: 'Login failed!',
@@ -18,8 +21,7 @@ const submit = (values: Object) =>
         _error: 'Login failed',
       })
     } else {
-      // eslint-disable-next-line no-alert
-      window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
+      dispatch(Actions.signInUser(values))
     }
   })
 

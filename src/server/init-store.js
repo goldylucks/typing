@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
 import texts from '../shared/modules/texts'
+import authReducer from '../shared/modules/authModal/reducer'
 
 const initStore = (plainPartialState: ?Object) => {
   const preloadedState = plainPartialState ? {} : undefined
@@ -19,6 +20,7 @@ const initStore = (plainPartialState: ?Object) => {
 
   const reducers = combineReducers({
     texts: texts.reducer,
+    auth: authReducer,
   })
   return createStore(reducers, preloadedState, applyMiddleware(thunkMiddleware))
 }

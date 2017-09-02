@@ -13,6 +13,7 @@ import { AppContainer } from 'react-hot-loader'
 import { reducer as formReducer } from 'redux-form'
 
 import texts from '../shared/modules/texts'
+import authReducer from '../shared/modules/authModal/reducer'
 import { APP_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/utils'
 import App from '../shared/App'
@@ -32,6 +33,7 @@ const loggerMiddleware = new CreateLogger({
 })
 
 const reducers = {
+  auth: authReducer,
   texts: texts.reducer,
   form: formReducer,
 }
