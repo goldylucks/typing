@@ -22,41 +22,29 @@ const styles = {
 }
 
 class Header extends React.Component {
-  state = {
-    modalIsOpen: false,
-  }
-
-  openModal = () => {
-    this.setState({ modalIsOpen: true })
-  }
-
-  closeModal = () => {
-    this.setState({ modalIsOpen: false })
-  }
-
   props: {
     authenticated: boolean,
+    modalIsOpen: boolean,
     handleSignOut: Function,
+    closeModal: Function,
+    openModal: Function,
   }
 
   renderHistoryLinks() {
-    if (this.props.authenticated) {
-      return (
+    return (
+      this.props.authenticated ?
         <li className="nav-item" key="/history">
           <NavLink to="/history" className="nav-link" activeStyle={{ color: 'black' }} exact>History</NavLink>
-        </li>)
-    }
-    // eslint-disable-next-line
-    return
+        </li> : null
+    )
   }
 
   renderAuthLinks() {
-    if (this.props.authenticated) {
-      return (
-        <li><a className="nav-item" onClick={this.props.handleSignOut}>Logout</a></li>)
-    }
     return (
-      <li><a className="nav-item" onClick={this.openModal}>Login</a></li>)
+      this.props.authenticated ?
+        <li><a className="nav-item" onClick={this.props.handleSignOut}>Logout</a></li>
+        : <li><a className="nav-item" onClick={this.props.openModal}>Login</a></li>
+    )
   }
 
   render() {
@@ -82,13 +70,13 @@ class Header extends React.Component {
           </div>
         </nav>
         <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
+          isOpen={this.props.modalIsOpen}
+          onRequestClose={this.props.closeModal}
           contentLabel="Signup"
           style={styles.authModal}
         >
           <div className="modal-header">
-            <button className="close" onClick={this.closeModal}><span aria-hidden="true">&times;</span></button>
+            <button className="close" onClick={this.props.closeModal}><span aria-hidden="true">&times;</span></button>
             <h4 className="modal-title">Signup</h4>
           </div>
           <div className="modal-body">
@@ -102,10 +90,13 @@ class Header extends React.Component {
 
 const mapStateToProps = state => ({
   authenticated: state.auth.authenticated,
+  modalIsOpen: state.auth.modalIsOpen,
 })
 
 const mapDispatchToProps = dispatch => ({
   handleSignOut: () => { dispatch(AuthActions.signOutUser()) },
+  closeModal: () => { dispatch(AuthActions.closeModal()) },
+  openModal: () => { dispatch(AuthActions.openModal()) },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

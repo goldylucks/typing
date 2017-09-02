@@ -1,9 +1,10 @@
 // @flow
 
-import { SIGN_IN_USER, SIGN_OUT_USER } from './actions'
+import { SIGN_IN_USER, SIGN_OUT_USER, OPEN_MODAL, CLOSE_MODAL } from './actions'
 
 const initialState = {
   authenticated: false,
+  modalIsOpen: false,
 }
 
 const authReducer = (state: {} = initialState, action: { type: string }) => {
@@ -16,6 +17,16 @@ const authReducer = (state: {} = initialState, action: { type: string }) => {
     case SIGN_OUT_USER:
       return {
         ...state, authenticated: false,
+      }
+
+    case OPEN_MODAL:
+      return {
+        ...state, modalIsOpen: true,
+      }
+
+    case CLOSE_MODAL:
+      return {
+        ...state, modalIsOpen: false,
       }
 
     default:

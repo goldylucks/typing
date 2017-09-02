@@ -22,6 +22,7 @@ const submit = (values: Object, dispatch: Dispatch<*>) =>
       })
     } else {
       dispatch(Actions.signInUser(values))
+      dispatch(Actions.closeModal())
     }
   })
 
